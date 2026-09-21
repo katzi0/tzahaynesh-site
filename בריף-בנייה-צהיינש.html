@@ -1,0 +1,470 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Tzahaynesh Adel-Krut Site Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --ground:#F2EBE3; --surface:#FCF9F5; --surface-2:#E9E0D5;
+  --ink:#2A231D; --ink-2:#4F443A; --muted:#87786A; --line:#DFD4C6;
+  --accent:#4E6150; --accent-soft:#E2E7DF;
+  --warm:#B4634C; --warm-soft:#F7E6DE;
+  --stop:#9B3E2C; --stop-soft:#F6E1DB;
+  --weave:rgba(42,35,29,.022);
+  --shadow:0 1px 2px rgba(60,44,30,.05), 0 10px 30px -14px rgba(60,44,30,.22);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#1C1714; --surface:#251E19; --surface-2:#322920;
+    --ink:#F1E8DD; --ink-2:#D8CABB; --muted:#A3917F; --line:#3C3128;
+    --accent:#A2BCA4; --accent-soft:#2A342B;
+    --warm:#E29079; --warm-soft:#38231C;
+    --stop:#E9927C; --stop-soft:#3A201A;
+    --weave:rgba(255,255,255,.016);
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 30px -14px rgba(0,0,0,.65);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1C1714; --surface:#251E19; --surface-2:#322920;
+  --ink:#F1E8DD; --ink-2:#D8CABB; --muted:#A3917F; --line:#3C3128;
+  --accent:#A2BCA4; --accent-soft:#2A342B;
+  --warm:#E29079; --warm-soft:#38231C;
+  --stop:#E9927C; --stop-soft:#3A201A;
+  --weave:rgba(255,255,255,.016);
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 30px -14px rgba(0,0,0,.65);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink); background-color:var(--ground);
+  background-image:
+    repeating-linear-gradient(90deg, var(--weave) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(0deg, var(--weave) 0 1px, transparent 1px 3px);
+  font-family:"Assistant","Arial Hebrew",-apple-system,system-ui,sans-serif;
+  font-size:16.5px; line-height:1.66; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:820px; margin:0 auto; padding-inline:22px; padding-block:0}
+
+header{padding-block:52px 10px; border-bottom:2px solid var(--accent)}
+.eyebrow{font-size:12px; letter-spacing:.15em; font-weight:600; color:var(--warm); margin:0 0 14px}
+h1{font-family:"Frank Ruhl Libre",Georgia,serif; font-weight:900;
+   font-size:clamp(30px,6vw,44px); line-height:1.13; margin:0 0 14px; text-wrap:balance}
+.sub{font-size:18px; color:var(--ink-2); margin:0 0 22px; max-width:60ch}
+.meta{display:flex; flex-wrap:wrap; gap:8px 22px; font-size:13.5px; color:var(--muted); margin:0 0 22px}
+.meta b{color:var(--ink-2); font-weight:600}
+
+h2{font-family:"Frank Ruhl Libre",Georgia,serif; font-weight:700; font-size:27px;
+   margin:0 0 6px; line-height:1.28; text-wrap:balance}
+.sec{padding-block:42px 0}
+.sec-num{font-family:"Frank Ruhl Libre",Georgia,serif; font-size:14px; font-weight:700;
+         color:var(--accent); display:block; margin-bottom:5px}
+.sec > p{color:var(--ink-2); max-width:68ch}
+h3{font-size:18.5px; font-weight:700; margin:28px 0 6px; line-height:1.4}
+h4{font-size:15px; font-weight:700; margin:20px 0 6px; color:var(--accent);
+   letter-spacing:.02em}
+p{margin:0 0 13px}
+a{color:var(--accent)}
+ul{margin:0 0 13px; padding-inline-start:22px}
+li{margin-bottom:6px; color:var(--ink-2)}
+li b,p b{color:var(--ink); font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em;
+     background:var(--surface-2); padding:1px 6px; border-radius:5px}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:16px;
+      padding:20px 22px; margin:16px 0; box-shadow:var(--shadow)}
+.flag{background:var(--stop-soft); border:1px solid var(--stop); border-radius:16px;
+      padding:20px 22px; margin:18px 0}
+.flag h3{margin-top:0; color:var(--stop)}
+.flag p:last-child{margin-bottom:0}
+.note{background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 24%,transparent);
+      border-radius:14px; padding:16px 19px; margin:16px 0}
+.note p:last-child{margin-bottom:0}
+
+/* Hebrew copy blocks */
+.he{direction:rtl; text-align:right; background:var(--surface);
+    border:1px solid var(--line); border-inline-start:3px solid var(--warm);
+    border-radius:14px; padding:17px 20px; margin:12px 0}
+.he p{margin:0 0 11px; line-height:1.72}
+.he p:last-child{margin-bottom:0}
+.he-label{direction:ltr; text-align:left; font-size:11.5px; letter-spacing:.11em;
+          font-weight:700; color:var(--muted); margin:0 0 10px}
+.he-big{font-family:"Frank Ruhl Libre",Georgia,serif; font-size:19.5px; line-height:1.66}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:15px}
+.scroll{overflow-x:auto; margin:14px 0}
+.scroll table{margin:0; min-width:540px}
+th{text-align:left; font-size:12px; letter-spacing:.08em; font-weight:700;
+   color:var(--muted); padding:0 12px 8px 0; border-bottom:1px solid var(--line)}
+td{padding:11px 12px 11px 0; border-bottom:1px solid var(--line);
+   vertical-align:top; color:var(--ink-2)}
+td b{color:var(--ink)}
+tr:last-child td{border-bottom:none}
+
+.chip{display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.05em;
+      padding:3px 9px; border-radius:99px; white-space:nowrap}
+.chip-block{background:var(--stop-soft); color:var(--stop); border:1px solid var(--stop)}
+.chip-need{background:var(--warm-soft); color:var(--warm); border:1px solid var(--warm)}
+.chip-ok{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent)}
+
+.tracks{display:grid; gap:14px; margin:18px 0}
+.track{background:var(--surface); border:1px solid var(--line); border-radius:16px;
+       padding:19px 21px; box-shadow:var(--shadow)}
+.track-head{display:flex; align-items:baseline; gap:10px; margin-bottom:4px}
+.track-n{font-size:12px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums}
+.track-he{direction:rtl; font-family:"Frank Ruhl Libre",Georgia,serif;
+          font-size:20px; font-weight:700}
+.track dl{display:grid; grid-template-columns:auto 1fr; gap:5px 14px; margin:11px 0 0; font-size:14.5px}
+.track dt{font-weight:700; color:var(--accent); white-space:nowrap}
+.track dd{margin:0; color:var(--ink-2)}
+@media (max-width:520px){ .track dl{grid-template-columns:1fr; gap:2px} .track dd{margin-bottom:8px} }
+
+.map{background:var(--surface); border:1px solid var(--line); border-radius:16px;
+     padding:20px 22px; margin:16px 0; box-shadow:var(--shadow);
+     font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13.5px;
+     line-height:1.85; overflow-x:auto; white-space:pre; color:var(--ink-2)}
+
+footer{margin-top:50px; padding-block:26px 46px; border-top:1px solid var(--line);
+       font-size:14px; color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Build brief · handoff</p>
+  <h1>Tzahaynesh Adel-Krut — personal site</h1>
+  <p class="sub">Everything settled, everything still open, and the copy as she wrote it. Written for whoever builds this, whether that is a developer, a designer, or a future agent session.</p>
+  <div class="meta">
+    <span><b>Status</b> · pre-build, one blocker</span>
+    <span><b>Language</b> · Hebrew only, RTL</span>
+    <span><b>Deadline</b> · none</span>
+    <span><b>Updated</b> · 20 Sep 2026</span>
+  </div>
+</header>
+
+<!-- 1 -->
+<section class="sec">
+  <span class="sec-num">01</span>
+  <h2>The subject</h2>
+  <p><b>צהיינש אדל־קרוט / Tzahaynesh Adel-Krut.</b> Psychotherapist, supervisor, lecturer and workshop facilitator with 20+ years across education, community, therapy, supervision, management and academia. Private clinic in Hoshaya (הושעיה), treating adolescents and adults.</p>
+  <p>Spell the name exactly as above. Earlier drafts of this project used "Tzahinash", which is wrong. English transliteration for any Latin-script use: <code>Tzahaynesh Adel-Krut</code>.</p>
+
+  <h4>Credentials</h4>
+  <ul>
+    <li>M.A. Arts Therapy — Drama Therapy, Tel-Hai Academic College</li>
+    <li>Two-year CBT programme, under the Department of Psychology, University of Haifa</li>
+    <li>Further training in mindfulness-based CBT and ACT — Shiluv Center, and University of Haifa continuing education</li>
+    <li>Additional training: trauma, biofeedback, Nonviolent Communication (NVC), Adlerian parent guidance</li>
+    <li>Registered Supervisor (מדריכה רשומה) — יה״ת</li>
+  </ul>
+</section>
+
+<!-- 2 -->
+<section class="sec">
+  <span class="sec-num">02</span>
+  <h2>Canonical terms</h2>
+  <p>These are load-bearing. Copy that contradicts them is wrong however well it reads. The full glossary lives in <code>CONTEXT.md</code> at the repo root.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">ענווה תרבותית / Cultural Humility</h3>
+    <p>Her central term and the thread linking all four tracks. <b>Her</b> definition: a way of meeting any human being — curiosity toward their story, identity, values and belongings, together with a willingness to examine one's own assumptions, values and power relations in the encounter.</p>
+  </div>
+
+  <div class="flag">
+    <h3>Do not write it as expertise about populations</h3>
+    <p>This is the single most likely copy mistake, and she pre-empted it herself in the questionnaire. Cultural humility is <b>not</b> knowledge about "other communities", and the site must not reduce her to a specialist in any particular population. It is a stance toward difference between any two people — including the professional's own blind spots.</p>
+    <p>Also avoid <b>"intercultural awareness"</b> as the headline framing. That was the previous joint venture's language, not hers.</p>
+  </div>
+
+  <p><b>עבודה בינתרבותית / intercultural work</b> — the applied practice. A significant and distinguishing domain, deliberately not the whole identity.</p>
+</section>
+
+<!-- 3 -->
+<section class="sec">
+  <span class="sec-num">03</span>
+  <h2>Decisions</h2>
+  <p>Each of these was put to the commissioner and answered. Rationale included so a future reader does not reopen them by accident.</p>
+  <div class="scroll"><table>
+    <tr><th>Decision</th><th>Settled</th><th>Why</th></tr>
+    <tr><td><b>Whose site</b></td><td>Hers alone</td><td>Split from a two-person venture; she is the only subject.</td></tr>
+    <tr><td><b>Primary job</b></td><td>Professional calling card</td><td>Her answer to Q1, with no secondary goal — deliberately one job.</td></tr>
+    <tr><td><b>Structure</b></td><td>Identity page → four tracks</td><td>She ticked all seven audiences and refused a single persona, but named the fix herself: let each visitor find their own path.</td></tr>
+    <tr><td><b>Cultural humility</b></td><td>One domain among several</td><td>Prominent and clearly placed, but must not define her whole identity.</td></tr>
+    <tr><td><b>Language</b></td><td>Hebrew only, RTL</td><td>Her market is Israeli. No English or Arabic version.</td></tr>
+    <tr><td><b>Stack</b></td><td>Astro + Decap CMS</td><td>She must be able to edit unaided (Q20) and intends to keep publishing articles (Q14). Wix was explicitly ruled out.</td></tr>
+    <tr><td><b>Deadline</b></td><td>None</td><td>Her questionnaire mentioned the academic year; the commissioner has since removed the constraint.</td></tr>
+    <tr><td><b>Brand name</b></td><td>Omitted — <i>see 04</i></td><td>Commissioner's decision, reaffirmed after the conflict was raised.</td></tr>
+  </table></div>
+</section>
+
+<!-- 4 -->
+<section class="sec">
+  <span class="sec-num">04</span>
+  <h2>The brand question</h2>
+  <p>The one live risk in this project. Recorded in full because it is likely to resurface, and because the person building the About page needs to know it exists.</p>
+
+  <div class="flag">
+    <h3>Two accounts that cannot both hold</h3>
+    <p><b>The commissioner's brief:</b> the previous joint venture is not named anywhere. The new site is separate and replaces her presence there. Stated at the outset and reaffirmed when challenged.</p>
+    <p><b>Her questionnaire answers:</b> she describes herself as its <i>founder and manager, in the present tense and the first person singular</i>; lists it first among her significant stations; gives its shared address as a contact email for the new site; and, asked which sites she likes, names its website as her style reference.</p>
+    <p><b>The existing public site</b> credits two women as co-founders — <i>מייסדות</i>, plural feminine.</p>
+  </div>
+
+  <h4>How it is handled</h4>
+  <p>The body of work is hers and stays in the biography — roughly twenty years of development, consulting and training in intercultural work. Only the <b>name</b> is omitted. The affected sentence is isolated into a single content field so that restoring the name is a one-line edit rather than a rewrite.</p>
+
+  <div class="note">
+    <p><b>Before launch, confirm with her directly.</b> Publishing her as sole founder of something a live public page currently credits to two people is the kind of thing that becomes a dispute once search engines index it. This is a question for the two of them, not a copy decision.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="sec">
+  <span class="sec-num">05</span>
+  <h2>Sitemap</h2>
+  <p>One identity-led home page, four track pages beneath it, plus articles and contact. Seven stated audiences collapse into five doors, so nobody has to read a page meant for someone else. See <code>docs/adr/0002-five-tracks-not-four.md</code>.</p>
+
+  <div class="map">בית  ·  Home
+│   Identity, the one-line positioning, four doors, light proof
+│
+├── אודות  ·  About
+│      Biography, credentials, professional path, approach
+│
+├── טיפול  ·  Therapy
+│      Adolescents and adults · private clinic
+│
+├── הדרכת הורים  ·  Parent guidance
+│      Parents · the parent is the client, not the child
+│
+├── הדרכה וייעוץ למטפלים  ·  Supervision &amp; consultation
+│      Therapists and teams · intercultural case consultation
+│
+├── הרצאות והכשרות  ·  Lectures &amp; training
+│      Workshops, learning days, training programmes
+│
+├── ארגונים ואקדמיה  ·  Organizations &amp; academia
+│      Team and organizational work · academic teaching
+│
+├── מאמרים  ·  Articles
+│      She has existing material and intends to keep writing
+│
+└── צרו קשר  ·  Contact
+       WhatsApp · phone · email · form</div>
+
+  <div class="note">
+    <p><b>The home page carries the whole argument.</b> Her requirement: a visitor must grasp within the first moments who she is and what expertise she brings, feel depth, distinctiveness and humanity, and then identify their own route without effort. Everything else is a detail page.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="sec">
+  <span class="sec-num">06</span>
+  <h2>The five tracks</h2>
+  <p>Audience, format and scope are hers; do not invent offerings she did not name. The count is five rather than four for a reason recorded below and in <code>docs/adr/0002-five-tracks-not-four.md</code>.</p>
+
+  <div class="flag">
+    <h3>She gave two different four-way splits</h3>
+    <p>Her one-line summary lists <b>therapy · consultation and parent guidance · teaching and training · intercultural lectures</b>. Her detailed service list gives <b>therapy · supervision and consultation for therapists · lectures and training · organizations and academia</b>. Parent guidance appears only in the first; clinical supervision only in the second.</p>
+    <p>Both are real services, so the site carries both — five tracks. Confirm the parent-guidance track with her, since she did not include it when writing the list out in full.</p>
+    <p><b>Never label a nav item bare הדרכה.</b> Hebrew uses that one word for supervising therapists and for guiding parents. Unqualified, it sends a parent to a page written for clinicians — at exactly the moment the visitor is choosing a direction.</p>
+  </div>
+
+  <div class="tracks">
+
+    <div class="track">
+      <div class="track-head"><span class="track-n">01</span><span class="track-he">טיפול</span></div>
+      <dl>
+        <dt>Audience</dt><dd>Adolescents and adults facing emotional difficulty, anxiety, crisis, periods of transition, questions of identity and belonging, relationships, or a wish to change and improve quality of life.</dd>
+        <dt>Format</dt><dd>Individual therapy in the private clinic.</dd>
+        <dt>Approach</dt><dd>CBT combined with ACT, mindfulness and drama-therapy tools, adapted to the person and their world.</dd>
+        <dt>Scope</dt><dd>~60 minute sessions, usually weekly, according to need.</dd>
+      </dl>
+    </div>
+
+    <div class="track">
+      <div class="track-head"><span class="track-n">02</span><span class="track-he">הדרכת הורים</span><span class="chip chip-need">confirm with her</span></div>
+      <dl>
+        <dt>Audience</dt><dd>Parents seeking a different way of being with their child or adolescent. The parent is the client; the child is not in treatment. She holds Adlerian parent-guidance training.</dd>
+        <dt>Format</dt><dd>Individual work with a parent or with both parents.</dd>
+        <dt>Why separate</dt><dd>She ranked parents first among her audiences, and "my teenager and I are at war" is a different errand from "I want therapy". Folded under therapy, it is invisible to the people who need it.</dd>
+      </dl>
+    </div>
+
+    <div class="track">
+      <div class="track-head"><span class="track-n">03</span><span class="track-he">הדרכה וייעוץ למטפלים</span></div>
+      <dl>
+        <dt>Audience</dt><dd>Therapists and professionals deepening clinical work; plus teams meeting complexity around culture, identity, values, family, community, power relations, or gaps between the professional's world and the client's.</dd>
+        <dt>Format</dt><dd>Individual or group supervision; case consultation; team supervision.</dd>
+        <dt>Scope</dt><dd>A single consultation through to an ongoing supervisory process.</dd>
+      </dl>
+    </div>
+
+    <div class="track">
+      <div class="track-head"><span class="track-n">04</span><span class="track-he">הרצאות והכשרות</span></div>
+      <dl>
+        <dt>Audience</dt><dd>Therapy, mental health, education, welfare and health professionals; service providers, managers and professional teams.</dd>
+        <dt>Topics</dt><dd>Cultural humility; meeting difference; identity and culture in the therapy room; the professional's own biases and assumptions; power relations; communication and trust; adapting interventions to the client's world; clinical work in a multicultural reality.</dd>
+        <dt>Format</dt><dd>Lecture, experiential workshop, learning day, or training programme.</dd>
+        <dt>Scope</dt><dd>60–90 minute lecture · 2–4 hour workshop · ongoing series.</dd>
+      </dl>
+    </div>
+
+    <div class="track">
+      <div class="track-head"><span class="track-n">05</span><span class="track-he">ארגונים ואקדמיה</span></div>
+      <dl>
+        <dt>Organizations</dt><dd>Managers and teams working amid diversity — strengthening communication, trust and belonging, understanding cultural gaps, improving encounters with employees, colleagues, clients and service recipients. Consulting, lectures, workshops, manager coaching, team processes. Single session through to a tailored organizational process.</dd>
+        <dt>Academia</dt><dd>Academic institutions and professional training programmes. Teaching therapy, CBT, drama therapy, group work, cultural humility and intercultural intervention. Courses, lectures, workshops. A single teaching unit through to a full course.</dd>
+      </dl>
+    </div>
+
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="sec">
+  <span class="sec-num">07</span>
+  <h2>Copy deck</h2>
+  <p>Hebrew as she wrote it. Where two versions were offered, the chosen one is marked and the reason given. Light editing only — her voice is good and should survive the build.</p>
+
+  <h3>Positioning line</h3>
+  <p>Her answer to "introduce yourself in one sentence". Intended as the first thing a visitor reads.</p>
+  <div class="he">
+    <p class="he-label">HOME · HERO</p>
+    <p class="he-big">אני מלווה אנשים ברגעים של התבוננות, קושי ושינוי, ומלווה אנשי מקצוע וצוותים להעמיק את המפגש עם האדם שמולם — לראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.</p>
+  </div>
+
+  <h3>Track strip</h3>
+  <p>Her own four-part summary. Works as the labels for the four doors.</p>
+  <div class="he">
+    <p class="he-label">HOME · TRACKS</p>
+    <p>טיפול ופסיכותרפיה CBT בשילוב דרמ״ת <span style="color:var(--muted)">|</span> ייעוץ והדרכת הורים <span style="color:var(--muted)">|</span> הוראה והכשרה <span style="color:var(--muted)">|</span> הרצאות וסדנאות בעבודה בינתרבותית בגישת ענווה תרבותית</p>
+  </div>
+
+  <h3>The feeling to aim for</h3>
+  <p>Not copy for the page — the brief for the design. She offered two versions; <b>the second is chosen</b> for being tighter and more usable as a guiding line.</p>
+  <div class="he">
+    <p class="he-label">DESIGN BRIEF · CHOSEN</p>
+    <p class="he-big">מרחב אנושי, מקצועי ופתוח, שמעורר אמון וסקרנות ומזמין לגלות שיש יותר מדרך אחת לחיות, להשתנות ולצמוח.</p>
+  </div>
+
+  <h3>About</h3>
+  <p>She wrote two biographies. <b>Version 2 is chosen</b> — warmer, better paced, and it closes on her actual conviction rather than a list of qualifications. Degrees and training belong lower on the page, not in the opening. The venture name is omitted per section 04; that sentence is the isolated field.</p>
+  <div class="he">
+    <p class="he-label">ABOUT · CHOSEN, BRAND NAME REMOVED</p>
+    <p>אני צהיינש אדל־קרוט, ובמשך יותר מעשרים שנה אני פוגשת אנשים במרחבים של טיפול, חינוך, קהילה, הדרכה והכשרה. הדרך המקצועית שלי התחילה בעבודה חינוכית וקהילתית, המשיכה אל עולם הטיפול והפסיכותרפיה, ובהמשך גם להדרכת אנשי מקצוע וצוותים, הוראה באקדמיה, ניהול ופיתוח הכשרות.</p>
+    <p>כיום אני מטפלת במתבגרים ובמבוגרים בקליניקה פרטית, מדריכה מטפלים וצוותים, מרצה ומנחה סדנאות והכשרות. אני מגיעה מעולם הדרמה־תרפיה ומשלבת בעבודתי CBT, ACT ומיינדפולנס, לצד הכשרות בתחומי טראומה, ביופידבק, הדרכת הורים ותקשורת מקרבת.</p>
+    <p>לאורך הדרך הפך המפגש שבין אדם, זהות ותרבות לתחום משמעותי בעשייה שלי. אני עוסקת בפיתוח, בייעוץ ובהכשרה בתחום העבודה הבינתרבותית וגישת הענווה התרבותית (Cultural Humility). עבורי, ענווה תרבותית אינה עוסקת רק בעבודה עם אוכלוסיות מסוימות — אלא בדרך שבה אנחנו פוגשים כל אדם: בסקרנות, ברגישות ובנכונות לבחון גם את ההנחות והערכים שאנחנו עצמנו מביאים למפגש.</p>
+    <p>החיבור בין הגישות והעולמות השונים מאפשר לי לא להתאים את האדם לשיטה, אלא להתאים את המפגש לאדם — לסיפור שלו, לכוחות שלו, למערכות היחסים, לזהות ולתרבות שמעצבים את עולמו.</p>
+    <p>אחרי שנים של טיפול, הוראה והדרכה, אני עדיין מאמינה שאין שיטה אחת שמתאימה לכולם ואין דרך אחת נכונה לחיות, להתמודד או להשתנות. אני מביאה למפגש את הידע והניסיון שצברתי — אבל משתדלת תמיד להשאיר מקום לסקרנות, לאדם שמולי ולמה שעוד אינני יודעת.</p>
+  </div>
+
+  <div class="note">
+    <p><b>The isolated sentence.</b> Paragraph three currently opens <i>"אני עוסקת בפיתוח, בייעוץ ובהכשרה…"</i>. Her original read <i>"אני מייסדת ומנהלת את ״…״, ועוסקת בפיתוח…"</i>. Keep this in its own CMS field so the decision in section 04 can be reversed without touching the rest.</p>
+  </div>
+
+  <h3>Professional path</h3>
+  <p>Her explicit instruction: <i>do not present this as a list of employers.</i> It should read as one continuous path across community, education, therapy, academia and organizations, converging on the work she does now.</p>
+  <ul>
+    <li>Founder and director of an intercultural consulting and training practice — developing and leading consulting, workshops and training in intercultural awareness and practice <span class="chip chip-block">name omitted</span></li>
+    <li>Academic teaching and clinical supervision — M.A. Drama Therapy programme, Tel-Hai; CBT within the behaviour analysis programme, Oranim College; Seminar HaKibbutzim <span class="chip chip-need">exact title pending</span></li>
+    <li>Founded and managed the "נעם" therapy centre at Ulpanat Segula, alongside clinical work in drama therapy and CBT</li>
+    <li>Supervision of therapists and of therapy and education teams; individual supervision through the clinic. Registered Supervisor (יה״ת)</li>
+    <li>Developing and facilitating lectures, workshops and training for therapy and education teams, focused on multicultural work and cultural humility</li>
+    <li>Years of community and multicultural work — multicultural training manager at "חברים בטבע"; the multicultural programme of the Society for the Protection of Nature; coordinating a holistic community programme; family support</li>
+    <li>Professional associations — volunteer roles with יה״ת and איט״ה, including chairing a social committee</li>
+  </ul>
+
+  <h3>Testimonials</h3>
+  <p>She answered <i>"כן, אצרף בהמשך"</i> without saying from whom. This needs a boundary before the section is designed.</p>
+  <div class="flag">
+    <h3>Institutional testimonials only</h3>
+    <p>Quotes from a principal, a team leader or a training coordinator are ordinary professional marketing. Quotes from <b>therapy clients</b> are not: soliciting them reaches into the therapeutic relationship, and professional ethics codes treat them cautiously or bar them outright.</p>
+    <p>Design the section for named, role-attributed quotes — <i>"מנהלת בית ספר"</i>, <i>"מדריכה בתוכנית הכשרה"</i> — and do not build a client-review pattern. Put this to her directly; she may never have meant clients.</p>
+  </div>
+
+  <h3>Exclusions</h3>
+  <p>Stated by her, and firm.</p>
+  <ul>
+    <li><b>No children.</b> She treats adolescents and adults only.</li>
+    <li><b>No reduction to one thing</b> — not to a single population, not to lectures alone, not to cultural humility alone. The site must hold the full professional breadth.</li>
+    <li><b>Professional register.</b> Personal story only where it genuinely explains the work. No private-life disclosure that does not serve professional understanding.</li>
+  </ul>
+</section>
+
+<!-- 8 -->
+<section class="sec">
+  <span class="sec-num">08</span>
+  <h2>Design direction</h2>
+  <p>She chose four atmospheres at once — <i>warm and personal</i>, <i>calm and clean</i>, <i>professional and authoritative</i>, <i>artistic and creative</i>. They are not contradictory so much as unprioritised, so the ordering below is a proposal, not her instruction.</p>
+  <ul>
+    <li><b>Calm and clean carries the structure</b> — generous space, restrained palette, clear type hierarchy. This is what makes a seven-audience site legible.</li>
+    <li><b>Warm and personal comes from the photography</b> — her portrait, the workshops, the therapy room. Warmth through people rather than through decoration.</li>
+    <li><b>Authority comes from specificity</b> — real formats, real scopes, real credentials, stated plainly. Not from visual heaviness.</li>
+    <li><b>Artistic enters once, deliberately</b> — one considered gesture rather than creative treatment throughout. Her background is drama therapy and theatre; there is something real to draw on.</li>
+  </ul>
+  <div class="note">
+    <p><b>One caution on her reference.</b> Asked which sites she likes, she named the existing joint site. Given section 04, inheriting its visual language would work against the separation this project exists to create. Worth a direct conversation about what she likes <i>about</i> it — warmth? clarity? the photography? — rather than reproducing the look.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="sec">
+  <span class="sec-num">09</span>
+  <h2>Stack</h2>
+  <p><b>Astro + Decap CMS</b>, static, git-backed. Chosen against the alternatives for one reason: she said editing the site herself matters to her, and she intends to keep publishing articles. A static site she cannot touch would fail within months.</p>
+  <ul>
+    <li><b>Astro</b> — static output, no client JS by default, good RTL handling, content collections for articles.</li>
+    <li><b>Decap CMS</b> — free, git-backed, browser admin. She edits through a form; the site rebuilds itself.</li>
+    <li><b>Hosting</b> — Netlify or Vercel free tier. Build on push.</li>
+  </ul>
+  <div class="note">
+    <p><b>Decap's admin UI is English-only.</b> This is the known weak point of the choice. Mitigate by writing every field label and help text in Hebrew in the config, keeping the field set small, and giving her one short walkthrough. Budget real time for this — it is the difference between a site she maintains and a site she abandons.</p>
+  </div>
+  <h4>Accessibility</h4>
+  <p>Israeli regulations require businesses serving the public to make websites accessible — IS 5568, which adopts <b>WCAG 2.0 AA</b> — and to publish a הצהרת נגישות. Whether a private therapy practice is in scope is a question for a qualified adviser and has not been confirmed.</p>
+  <p><b>Build to AA regardless, and ship the statement page.</b> On a static Hebrew content site this is nearly free at the outset — semantic markup, sufficient contrast, visible keyboard focus, real alt text, correct heading order, no meaning carried by colour alone — and expensive to retrofit. Recorded in <code>docs/adr/0003-accessibility-to-wcag-aa.md</code>.</p>
+
+  <h4>What she must be able to do unaided</h4>
+  <ul>
+    <li>Publish, edit and unpublish an article</li>
+    <li>Edit the text of any track page</li>
+    <li>Replace her portrait and add workshop photos</li>
+    <li>Change contact details</li>
+    <li>Add and reorder testimonials as they arrive</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section class="sec">
+  <span class="sec-num">10</span>
+  <h2>Open items</h2>
+  <p>Nothing here is a design question. All of it is material or confirmation that has to come from her.</p>
+  <div class="scroll"><table>
+    <tr><th>Item</th><th>Status</th><th>Notes</th></tr>
+    <tr><td><b>Brand name confirmation</b></td><td><span class="chip chip-block">BLOCKER</span></td><td>Section 04. Gates the About page only — design and build can proceed around it.</td></tr>
+    <tr><td><b>Photographs</b></td><td><span class="chip chip-need">NEEDED</span></td><td>She has them: portrait, workshops and groups, the therapy room. Confirm permission to publish any image showing participants.</td></tr>
+    <tr><td><b>Phone number</b></td><td><span class="chip chip-need">NEEDED</span></td><td>She ticked WhatsApp, phone, email and form, then left the details field empty.</td></tr>
+    <tr><td><b>Public email</b></td><td><span class="chip chip-need">NEEDED</span></td><td>She gave two. One belongs to the shared venture — see section 04. A new address on her own domain is the clean answer.</td></tr>
+    <tr><td><b>Domain</b></td><td><span class="chip chip-need">NEEDED</span></td><td>None registered. Decided: <code>tzahaynesh.co.il</code>, with the full-name variant redirecting to it. Her first name is distinctive in Israel, which is an asset. Registration takes a few days and gates launch; it also frees her from the shared Gmail address.</td></tr>
+    <tr><td><b>Clinic address</b></td><td><span class="chip chip-need">NEEDED</span></td><td>Hoshaya. Decide whether the full address is published or only the area.</td></tr>
+    <tr><td><b>Testimonials</b></td><td><span class="chip chip-need">NEEDED</span></td><td>Institutional and professional only — see section 07. Nothing from therapy clients.</td></tr>
+    <tr><td><b>Seminar HaKibbutzim title</b></td><td><span class="chip chip-need">NEEDED</span></td><td>She flagged this herself: <i>"לאחר שנדייק את שם התפקיד והתוכנית"</i>.</td></tr>
+    <tr><td><b>Tel-Hai institution name</b></td><td><span class="chip chip-need">NEEDED</span></td><td>Her Q12 line is garbled between the college and a university in the Galilee. Get the correct current name rather than guessing.</td></tr>
+    <tr><td><b>Existing articles</b></td><td><span class="chip chip-need">NEEDED</span></td><td>She has written material. Needed to size and structure the articles section.</td></tr>
+    <tr><td><b>Old site</b></td><td><span class="chip chip-block">ACTION</span></td><td>Decided: her page comes down, or the joint site does, <b>before</b> this one launches. Otherwise both surface for her name and the separation is visible to anyone vetting her. If that is not in her power, say so — it changes what the About page can safely claim.</td></tr>
+    <tr><td><b>Accessibility statement</b></td><td><span class="chip chip-need">NEEDED</span></td><td>Content for the הצהרת נגישות page — contact for accessibility issues, and the level of conformance claimed.</td></tr>
+    <tr><td><b>Copy and structure</b></td><td><span class="chip chip-ok">READY</span></td><td>Sections 05–07. Enough to design and build against today.</td></tr>
+  </table></div>
+</section>
+
+<footer>
+  <p>Assembled from a 21-question intake questionnaire she completed on 18 September 2026, the public content of the existing joint site, and the decisions recorded in section 03. The glossary lives at <code>CONTEXT.md</code> in the project repository; where this document and the glossary disagree, the glossary is canonical.</p>
+</footer>
+
+</div>
+</body>
+</html>
