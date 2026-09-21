@@ -81,7 +81,7 @@ const contactChannels = [
 
     <div class="track-list">
       {tracks.map((track) => (
-        <a href={`/tracks/${track.data.slug}`} class="track-row">
+        <a href={`${import.meta.env.BASE_URL}tracks/${track.data.slug}`} class="track-row">
           <span class="n" aria-hidden="true">{String(track.data.order).padStart(2, "0")}</span>
           <span class="body">
             <h3>{track.data.title}</h3>

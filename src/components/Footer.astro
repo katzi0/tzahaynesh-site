@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 
 const tracksRaw = await getCollection("tracks");
 const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="site-footer">
@@ -11,12 +13,12 @@ const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
     <span class="footer-tagline">פסיכותרפיה · הדרכה קלינית והדרכת הורים · הרצאות והכשרות · ארגונים ואקדמיה</span>
   </div>
   <nav class="footer-nav" aria-label="ניווט תחתון">
-    <a href="/">דף הבית</a>
+    <a href={base}>דף הבית</a>
     {tracks.map((track) => (
-      <a href={`/tracks/${track.data.slug}`}>{track.data.title}</a>
+      <a href={`${base}tracks/${track.data.slug}`}>{track.data.title}</a>
     ))}
-    <a href="/about">אודות</a>
-    <a href="/articles">מאמרים</a>
-    <a href="/#contact">צרו קשר</a>
+    <a href={`${base}about`}>אודות</a>
+    <a href={`${base}articles`}>מאמרים</a>
+    <a href={`${base}#contact`}>צרו קשר</a>
   </nav>
 </footer>

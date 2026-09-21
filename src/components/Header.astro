@@ -7,6 +7,16 @@ import { getCollection } from "astro:content";
 const tracksRaw = await getCollection("tracks");
 const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
 
+// Every internal href below is built from BASE_URL rather than hardcoded
+// from the domain root, so the site works whether it's served at "/" (the
+// eventual domain) or under a subpath (the GitHub Pages review deploy).
+const base = import.meta.env.BASE_URL;
+const home = base;
+const about = `${base}about`;
+const articles = `${base}articles`;
+const contact = `${base}#contact`;
+const trackHref = (slug: string) => `${base}tracks/${slug}`;
+
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 function isCurrent(href: string) {
   const clean = href.replace(/\/$/, "") || "/";
@@ -26,7 +36,7 @@ function isCurrent(href: string) {
 </noscript>
 
 <header class="site-header">
-  <a href="/" class="logo">
+  <a href={home} class="logo">
     <span class="logo-name">צהיינש אדל־קרוט</span>
     <span class="logo-tagline">פסיכותרפיה · הדרכה קלינית · ייעוץ</span>
   </a>
@@ -36,18 +46,18 @@ function isCurrent(href: string) {
   </button>
 
   <nav id="mainNav" class="main-nav" aria-label="ניווט ראשי">
-    <a href="/" class={isCurrent("/") ? "is-current" : undefined} aria-current={isCurrent("/") ? "page" : undefined}>דף הבית</a>
+    <a href={home} class={isCurrent(home) ? "is-current" : undefined} aria-current={isCurrent(home) ? "page" : undefined}>דף הבית</a>
     {tracks.map((track) => {
-      const href = `/tracks/${track.data.slug}`;
+      const href = trackHref(track.data.slug);
       return (
         <a href={href} class={isCurrent(href) ? "is-current" : undefined} aria-current={isCurrent(href) ? "page" : undefined}>
           {track.data.title}
         </a>
       );
     })}
-    <a href="/about" class={isCurrent("/about") ? "is-current" : undefined} aria-current={isCurrent("/about") ? "page" : undefined}>אודות</a>
-    <a href="/articles" class={isCurrent("/articles") ? "is-current" : undefined} aria-current={isCurrent("/articles") ? "page" : undefined}>מאמרים</a>
-    <a href="/#contact" class="btn btn-header">יצירת קשר</a>
+    <a href={about} class={isCurrent(about) ? "is-current" : undefined} aria-current={isCurrent(about) ? "page" : undefined}>אודות</a>
+    <a href={articles} class={isCurrent(articles) ? "is-current" : undefined} aria-current={isCurrent(articles) ? "page" : undefined}>מאמרים</a>
+    <a href={contact} class="btn btn-header">יצירת קשר</a>
   </nav>
 </header>
 
