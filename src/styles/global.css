@@ -1,0 +1,648 @@
+/* ============================================
+   צהיינש אדל־קרוט — design system
+   Palette: sage, terracotta, warm beige | serif headings, sans body
+   Source: the downloaded theme, token names kept as declared there.
+   Two values below are corrected for WCAG 2.0 AA — see
+   docs/specs/0001-design-system-and-home-page.md, "Palette values
+   corrected for AA".
+   ============================================ */
+
+:root {
+  --bg: #FAF6F0;
+  --hero-bg: #F3E9DC;
+  --text-dark: #2A2A26;
+  --text-body: #4A4A44;
+  --text-body-soft: #3D3D37;
+  --text-muted: #6E6659; /* was #7A7266 — 4.41:1 on --bg, corrected to 5.26:1 */
+
+  --sage: #3F5A48;
+  --sage-soft: #E7EEE8;
+  --terracotta: #9B5636; /* was #A9613F — 4.36:1 on --bg, corrected to 5.16:1 */
+
+  --card-bg: #FFFEFB;
+  --hairline: #EDE4D6;
+
+  --footer-bg: #2A2A26;
+  --footer-text: #E9E4DA;
+  --footer-muted: #BCB6A9;
+
+  --font-serif: "Frank Ruhl Libre", Georgia, serif;
+  --font-sans: "Assistant", "Arial Hebrew", system-ui, sans-serif;
+
+  --container-px: 72px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --focus-ring: 3px solid var(--terracotta);
+  --focus-ring-offset: 2px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  direction: rtl;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--sage); text-decoration: none; }
+a:hover { color: var(--terracotta); text-decoration: underline; }
+
+h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
+
+/* ---------- accessibility primitives ---------- */
+/* See docs/specs/0001, "Accessibility lands in the primitives". */
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--sage);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
+  outline-offset: 4px;
+}
+
+/* ---------- draft bar ---------- */
+/* Review draft only — see docs/specs/0001, "Home page structure". Remove
+   this component, and this component only, when the site goes live. */
+
+.draft-bar {
+  background: var(--text-dark);
+  color: var(--footer-text);
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 8px var(--container-px);
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.btn-header {
+  background: var(--sage);
+  color: #fff;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  min-height: 44px;
+}
+
+.btn-primary {
+  background: var(--sage);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 18px 34px;
+  border-radius: 14px;
+  min-height: 44px;
+  box-shadow: 0 10px 24px rgba(63, 90, 72, .22);
+  align-self: flex-start;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1.5px solid var(--sage);
+  color: var(--sage);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  min-height: 40px;
+  align-self: flex-start;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 20px var(--container-px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--hairline);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.logo-tagline {
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+}
+
+.nav-toggle {
+  display: none;
+  margin-inline-start: auto;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  padding: 8px;
+  cursor: pointer;
+}
+
+.main-nav {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  font-size: 15.5px;
+  color: var(--text-body);
+  flex-wrap: wrap;
+}
+
+.main-nav a { color: var(--text-body); }
+.main-nav a.is-current { color: var(--text-dark); font-weight: 600; }
+.main-nav a:hover { text-decoration: none; color: var(--terracotta); }
+
+.main-nav .btn-header { margin-inline-start: auto; }
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding: 96px var(--container-px);
+  background: var(--hero-bg);
+}
+
+.hero-decor { position: absolute; inset: 0; pointer-events: none; }
+.hero-decor .circle { position: absolute; border-radius: 50%; }
+/* Logical properties: physical right/top in the source theme replaced so
+   the decoration follows the document's own RTL direction rather than a
+   hand-mirrored coordinate. */
+.hero-decor .circle-a {
+  inset-inline-end: -120px; inset-block-start: -170px;
+  width: 520px; height: 520px; border: 1px solid #E4D3B8;
+}
+.hero-decor .circle-b {
+  inset-inline-end: -40px; inset-block-start: -70px;
+  width: 360px; height: 360px; border: 1px solid #CBD8CC;
+}
+
+.hero-content {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.hero-eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--terracotta);
+}
+
+.hero-content h1 {
+  font-size: 54px;
+  font-weight: 500;
+  line-height: 1.28;
+  color: var(--text-dark);
+}
+
+.hero-content p {
+  margin: 0;
+  font-size: 18.5px;
+  font-weight: 300; /* carve-out: large lede text, kept light per spec */
+  line-height: 1.85;
+  color: var(--text-body-soft);
+}
+
+/* Hero illustration — the theme's therapy-room drawing, decorative. */
+.hero-illustration {
+  flex-shrink: 0;
+  width: 420px;
+  height: 560px;
+  border-radius: 220px 220px 24px 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(90, 60, 30, .14);
+}
+
+.hero-illustration svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Portrait slot — honestly empty until her photograph is supplied. Lives on
+   the About page; see docs/specs/0001, "Hero shows an honestly empty
+   portrait slot" (the pattern; placement moved to About at the user's
+   direction). */
+.portrait-slot {
+  width: 260px;
+  height: 340px;
+  border-radius: 130px 130px 24px 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(90, 60, 30, .12);
+  background: linear-gradient(180deg, #EFE5D6 0%, #E3D5BE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--hairline);
+}
+
+.portrait-slot-compact {
+  width: 180px;
+  height: 230px;
+  border-radius: 90px 90px 18px 18px;
+}
+
+.portrait-slot-inner {
+  padding: 28px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 200px;
+}
+
+.portrait-slot-inner svg {
+  display: block;
+  margin: 0 auto 14px;
+  color: #C7B899;
+}
+
+/* ---------- positioning line (the one artistic gesture) ---------- */
+/* See docs/specs/0001, "The one artistic gesture". */
+
+.positioning {
+  padding: 72px var(--container-px);
+  background: var(--bg);
+}
+
+.positioning blockquote {
+  margin: 0 auto;
+  max-width: 46ch;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+/* ---------- credentials strip ---------- */
+
+.credentials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 22px var(--container-px);
+  background: var(--hero-bg);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.credentials .dot { color: #D8CEBC; }
+
+/* ---------- tracks (five, as a row list — not a card grid) ---------- */
+/* See docs/specs/0001, "Home page structure": five is an odd count and a
+   two-column grid strands the fifth. */
+
+.tracks {
+  padding: 88px var(--container-px);
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.tracks-heading { display: flex; flex-direction: column; gap: 8px; }
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  color: var(--sage);
+}
+
+.tracks-heading h2 {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.track-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-row {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding-block: 28px;
+  border-top: 1px solid var(--hairline);
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.track-row:last-child { border-bottom: 1px solid var(--hairline); }
+
+.track-row .n {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--terracotta);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+  width: 26px;
+  align-self: flex-start;
+  padding-top: 6px;
+}
+
+.track-row .body { flex: 1; min-width: 0; }
+
+.track-row h3 {
+  font-size: 23px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--text-dark);
+}
+
+.track-row p {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+.track-row .arw {
+  flex: none;
+  color: var(--terracotta);
+  font-size: 20px;
+  align-self: center;
+}
+
+.track-row:hover h3 { color: var(--terracotta); }
+.track-row:hover .n { text-decoration: underline; }
+
+/* ---------- cultural humility ---------- */
+
+.humility {
+  padding: 80px var(--container-px);
+  background: var(--sage-soft);
+}
+
+.humility-in {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.humility h2 {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  color: var(--text-dark);
+}
+
+.humility p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+/* ---------- contact ---------- */
+/* Channels she chose, values honestly empty. See docs/specs/0001, "Home
+   page structure". */
+
+.contact {
+  padding: 80px var(--container-px);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.contact-heading { text-align: center; display: flex; flex-direction: column; gap: 10px; }
+.contact-heading h2 { font-size: 32px; font-weight: 700; }
+.contact-heading p { margin: 0; color: var(--text-body); font-size: 16px; }
+
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact-channel {
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-channel .label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--sage);
+}
+
+.contact-channel .value {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px var(--container-px);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+.footer-brand { display: flex; flex-direction: column; gap: 6px; }
+
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.footer-tagline { font-size: 14px; font-weight: 400; color: var(--footer-muted); }
+
+.footer-nav { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14.5px; font-weight: 400; }
+.footer-nav a { color: #DCD7CC; }
+
+/* ---------- stub pages (About, Articles, track stubs) ---------- */
+
+.stub-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px var(--container-px) 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stub-page h1 {
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.stub-page .field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-block: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+.stub-page .field .label {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--sage);
+}
+
+.stub-page .field p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+.stub-page .pending {
+  background: var(--sage-soft);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1100px) {
+  .hero { flex-direction: column; align-items: stretch; text-align: center; padding: 72px 40px; }
+  .hero-content { max-width: 100%; align-items: center; }
+  .btn-primary { align-self: center; }
+  .hero-illustration { width: 100%; max-width: 420px; height: 420px; margin: 0 auto; }
+  .credentials { padding: 22px 40px; }
+  .tracks { padding: 64px 40px; }
+  .positioning { padding: 56px 40px; }
+  .humility { padding: 64px 40px; }
+  .contact { padding: 64px 40px; }
+  .contact-channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .site-header { flex-wrap: wrap; padding: 16px 24px; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .main-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    order: 3;
+    padding-top: 16px;
+  }
+  .main-nav.is-open { display: flex; }
+  .main-nav .btn-header { margin-inline-start: 0; }
+  .hero-content h1 { font-size: 40px; }
+  .track-row { gap: 14px; }
+  .track-row .arw { display: none; }
+  .site-footer { flex-direction: column; align-items: flex-start; text-align: right; }
+}
+
+@media (max-width: 480px) {
+  .hero, .tracks, .credentials, .positioning, .humility, .contact, .stub-page {
+    padding-left: 20px; padding-right: 20px;
+  }
+  .hero-content h1 { font-size: 32px; }
+  .contact-channels { grid-template-columns: 1fr; }
+}

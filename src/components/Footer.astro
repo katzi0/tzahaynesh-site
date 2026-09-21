@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+
+const tracksRaw = await getCollection("tracks");
+const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
+---
+
+<footer class="site-footer">
+  <div class="footer-brand">
+    <span class="footer-name">צהיינש אדל־קרוט</span>
+    <span class="footer-tagline">פסיכותרפיה · הדרכה קלינית והדרכת הורים · הרצאות והכשרות · ארגונים ואקדמיה</span>
+  </div>
+  <nav class="footer-nav" aria-label="ניווט תחתון">
+    <a href="/">דף הבית</a>
+    {tracks.map((track) => (
+      <a href={`/tracks/${track.data.slug}`}>{track.data.title}</a>
+    ))}
+    <a href="/about">אודות</a>
+    <a href="/articles">מאמרים</a>
+    <a href="/#contact">צרו קשר</a>
+  </nav>
+</footer>

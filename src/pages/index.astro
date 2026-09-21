@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroIllustration from "../components/HeroIllustration.astro";
+import { getCollection } from "astro:content";
+
+const tracksRaw = await getCollection("tracks");
+const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
+
+// Positioning line, verbatim from brief §07 (HOME · HERO). Intended as the
+// first substantial thing a visitor reads — see "The one artistic gesture"
+// in docs/specs/0001.
+const positioningLine =
+  "אני מלווה אנשים ברגעים של התבוננות, קושי ושינוי, ומלווה אנשי מקצוע וצוותים להעמיק את המפגש עם האדם שמולם — לראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.";
+
+// Her own definition of cultural humility, verbatim from the chosen About
+// copy in brief §07 (the sentence itself, not the omitted-name sentence
+// beside it — see ADR 0001). Not the isolated/gated field.
+const humilityDefinition =
+  "עבורי, ענווה תרבותית אינה עוסקת רק בעבודה עם אוכלוסיות מסוימות — אלא בדרך שבה אנחנו פוגשים כל אדם: בסקרנות, ברגישות ובנכונות לבחון גם את ההנחות והערכים שאנחנו עצמנו מביאים למפגש.";
+
+const credentials = [
+  "M.A. תרפיה באמנויות — דרמה תרפיה",
+  "תוכנית CBT דו־שנתית, אוניברסיטת חיפה",
+  "ACT ומיינדפולנס",
+  "מדריכה רשומה (יה״ת)",
+  "למעלה מ־20 שנות עבודה",
+];
+
+// Channels she ticked (brief §10); values are open items, never invented.
+const contactChannels = [
+  { label: "WhatsApp", value: "בקרוב" },
+  { label: "טלפון", value: "בקרוב" },
+  { label: "אימייל", value: "בקרוב" },
+  { label: "טופס יצירת קשר", value: "בקרוב" },
+];
+---
+
+<BaseLayout
+  title="צהיינש אדל־קרוט — פסיכותרפיה, הדרכה קלינית וייעוץ"
+  description="צהיינש אדל־קרוט: פסיכותרפיה, הדרכה קלינית והדרכת הורים, הרצאות והכשרות, וייעוץ לארגונים ולאקדמיה — מתוך גישת הענווה התרבותית."
+>
+  <section class="hero" aria-label="פתיח">
+    <div class="hero-decor" aria-hidden="true">
+      <span class="circle circle-a"></span>
+      <span class="circle circle-b"></span>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">פסיכותרפיה · הדרכה קלינית · ייעוץ</p>
+      <h1>צהיינש אדל־קרוט</h1>
+      <p>פסיכותרפיה · הדרכה קלינית והדרכת הורים · הרצאות והכשרות · ארגונים ואקדמיה — מתוך גישת הענווה התרבותית, מעל 20 שנות ניסיון.</p>
+      <a href="#contact" class="btn btn-primary">
+        <span>יצירת קשר</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6 9 12l6 6"></path></svg>
+      </a>
+    </div>
+
+    <div class="hero-illustration" aria-hidden="true">
+      <HeroIllustration />
+    </div>
+  </section>
+
+  <section class="positioning" aria-label="שורת פתיחה">
+    <blockquote>{positioningLine}</blockquote>
+  </section>
+
+  <section class="credentials" aria-label="הכשרה וניסיון">
+    {credentials.map((item, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true" class="dot">·</span>}
+        <span>{item}</span>
+      </>
+    ))}
+  </section>
+
+  <section id="tracks" class="tracks" aria-label="המסלולים">
+    <div class="tracks-heading">
+      <p class="eyebrow">המסלולים</p>
+      <h2>חמישה מסלולים, לפי מי שאתם</h2>
+    </div>
+
+    <div class="track-list">
+      {tracks.map((track) => (
+        <a href={`/tracks/${track.data.slug}`} class="track-row">
+          <span class="n" aria-hidden="true">{String(track.data.order).padStart(2, "0")}</span>
+          <span class="body">
+            <h3>{track.data.title}</h3>
+            <p>{track.data.summary}</p>
+          </span>
+          <span class="arw" aria-hidden="true">‹</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="humility" aria-label="ענווה תרבותית">
+    <div class="humility-in">
+      <h2>ענווה תרבותית</h2>
+      <p>{humilityDefinition}</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-label="צרו קשר">
+    <div class="contact-heading">
+      <h2>צרו קשר</h2>
+      <p>פרטי ההתקשרות בדרך — הערוצים שנבחרו מופיעים כאן ברגע שיאושרו.</p>
+    </div>
+    <div class="contact-channels">
+      {contactChannels.map((c) => (
+        <div class="contact-channel">
+          <span class="label">{c.label}</span>
+          <span class="value">{c.value}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+// The honestly-empty portrait slot — an arched frame asking for her photo
+// rather than a stand-in image. Moved here from the hero (which now carries
+// the theme's illustration instead) to the About page, at the user's
+// direction. See docs/specs/0001, "Hero shows an honestly empty portrait
+// slot" — the pattern is unchanged, only its placement moved.
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+<div class={`portrait-slot${compact ? " portrait-slot-compact" : ""}`}>
+  <div class="portrait-slot-inner">
+    <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4.5 3.6-7 8-7s8 2.5 8 7"></path></svg>
+    <p>כאן תופיע תמונת הפורטרט שלך</p>
+  </div>
+</div>

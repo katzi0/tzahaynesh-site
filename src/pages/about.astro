@@ -1,0 +1,27 @@
+---
+// Minimal stub so the nav resolves in full. Real biography content is
+// blocked on the brand-name confirmation in brief §04 and gated by ADR
+// 0001 — see docs/specs/0001, "Home page structure" and "Out of Scope".
+// The portrait slot lives here (not in the hero) at the user's direction —
+// the hero carries the theme's illustration instead.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortraitSlot from "../components/PortraitSlot.astro";
+---
+
+<BaseLayout
+  title="אודות — צהיינש אדל־קרוט"
+  description="אודות צהיינש אדל־קרוט — בקרוב."
+>
+  <article class="stub-page">
+    <p class="eyebrow">אודות</p>
+    <h1>אודות</h1>
+
+    <PortraitSlot />
+
+    <p class="pending">
+      עמוד זה ממתין לאישורה של צהיינש בשאלת שם המיזם המשותף — ראו
+      <code>docs/adr/0001-omitting-the-joint-venture-name.md</code>.
+      הביוגרפיה עצמה תיכתב לאחר האישור.
+    </p>
+  </article>
+</BaseLayout>

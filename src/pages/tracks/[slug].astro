@@ -1,0 +1,50 @@
+---
+// One route generates all five track stub pages from the content
+// collection — no per-track file to keep in sync. See docs/specs/0001,
+// "Five minimal track routes": these carry only the canonical title, the
+// audience line and the scope line from brief §06. Real content is
+// separate work, out of scope here.
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const tracks = await getCollection("tracks");
+  return tracks.map((track) => ({
+    params: { slug: track.data.slug },
+    props: { track },
+  }));
+}
+
+const { track } = Astro.props;
+const { title, audience, format, scope } = track.data;
+---
+
+<BaseLayout
+  title={`${title} — צהיינש אדל־קרוט`}
+  description={`${title}: ${audience}`}
+>
+  <article class="stub-page">
+    <p class="eyebrow">מסלול</p>
+    <h1>{title}</h1>
+
+    <div class="field">
+      <span class="label">קהל היעד</span>
+      <p>{audience}</p>
+    </div>
+    <div class="field">
+      <span class="label">מתכונת</span>
+      <p>{format}</p>
+    </div>
+    {scope !== format && (
+      <div class="field">
+        <span class="label">היקף</span>
+        <p>{scope}</p>
+      </div>
+    )}
+
+    <p class="pending">
+      זהו עמוד מסלול ראשוני. התוכן המלא — כולל הרחבה, דוגמאות ותהליך יצירת
+      קשר ייעודי — ייבנה בהמשך.
+    </p>
+  </article>
+</BaseLayout>
