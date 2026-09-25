@@ -228,50 +228,42 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   background: var(--hero-bg);
 }
 
-.hero-decor { position: absolute; inset: 0; pointer-events: none; }
-.hero-decor .circle { position: absolute; border-radius: 50%; }
-/* Logical properties: physical right/top in the source theme replaced so
-   the decoration follows the document's own RTL direction rather than a
-   hand-mirrored coordinate. */
-.hero-decor .circle-a {
-  inset-inline-end: -120px; inset-block-start: -170px;
-  width: 520px; height: 520px; border: 1px solid #E4D3B8;
-}
-.hero-decor .circle-b {
-  inset-inline-end: -40px; inset-block-start: -70px;
-  width: 360px; height: 360px; border: 1px solid #CBD8CC;
-}
-
 .hero-content {
   position: relative;
   flex: 1 1 0;
   max-width: 560px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
-}
-
-.hero-eyebrow {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  color: var(--terracotta);
+  gap: 0;
 }
 
 .hero-content h1 {
+  margin: 0;
   font-size: 54px;
   font-weight: 500;
   line-height: 1.28;
   color: var(--text-dark);
 }
 
-.hero-content p {
-  margin: 0;
+/* Role line right under the name, tightly coupled to it —
+   "פסיכותרפיסטית | מדריכה קלינית | מרצה" */
+.hero-role {
+  margin: 8px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--sage);
+}
+
+.hero-desc {
+  margin: 24px 0 0;
   font-size: 18.5px;
   font-weight: 300; /* carve-out: large lede text, kept light per spec */
   line-height: 1.85;
   color: var(--text-body-soft);
+}
+
+.hero-content .btn-primary {
+  margin-top: 30px;
 }
 
 /* Hero illustration — the theme's therapy-room drawing, decorative. */
