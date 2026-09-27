@@ -594,6 +594,53 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   line-height: 1.7;
 }
 
+/* ---------- About page ---------- */
+
+.about-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px var(--container-px) 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-page h1 {
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.about-prose p {
+  margin: 0 0 1.1em;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+.about-prose .about-lead {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.about-prose .about-turn {
+  margin-top: 1.8em;
+  font-family: var(--font-serif);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--sage);
+}
+
+.about-prose .about-close {
+  margin-top: 1.8em;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--text-dark);
+}
+
 /* ============================================
    Responsive
    ============================================ */
@@ -632,7 +679,7 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
 }
 
 @media (max-width: 480px) {
-  .hero, .tracks, .credentials, .positioning, .humility, .contact, .stub-page {
+  .hero, .tracks, .credentials, .positioning, .humility, .contact, .stub-page, .about-page {
     padding-left: 20px; padding-right: 20px;
   }
   .hero-content h1 { font-size: 32px; }
