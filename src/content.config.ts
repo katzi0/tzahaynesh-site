@@ -28,6 +28,21 @@ const tracks = defineCollection({
     format: z.string(),
     // Scope line from brief §06, for the stub page.
     scope: z.string(),
+    // Her full text for the track, once she supplies it. When present the
+    // page renders these sections instead of the audience/format/scope stub.
+    // Icons come from a fixed set in TrackIcon.astro so every track shares
+    // one stroke, size and palette.
+    sections: z
+      .array(
+        z.object({
+          icon: z.enum(["people", "integrate", "dialogue"]),
+          heading: z.string(),
+          paragraphs: z.array(z.string()).min(1),
+        }),
+      )
+      .optional(),
+    // Closing statement set apart after the sections.
+    closing: z.string().optional(),
   }),
 });
 

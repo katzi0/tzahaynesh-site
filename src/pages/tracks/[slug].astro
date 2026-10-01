@@ -7,6 +7,7 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrackIcon from "../../components/TrackIcon.astro";
 import lecturePhoto from "../../assets/photos/lecture.webp";
 
 // Track-specific photographs, keyed by slug. Only tracks with a photo that
@@ -27,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 const { track } = Astro.props;
-const { title, audience, format, scope, slug } = track.data;
+const { title, audience, format, scope, slug, sections, closing } = track.data;
 const photo = trackPhotos[slug as keyof typeof trackPhotos];
 ---
 
@@ -45,24 +46,41 @@ const photo = trackPhotos[slug as keyof typeof trackPhotos];
       </figure>
     )}
 
-    <div class="field">
-      <span class="label">קהל היעד</span>
-      <p>{audience}</p>
-    </div>
-    <div class="field">
-      <span class="label">מתכונת</span>
-      <p>{format}</p>
-    </div>
-    {scope !== format && (
-      <div class="field">
-        <span class="label">היקף</span>
-        <p>{scope}</p>
-      </div>
-    )}
+    {sections ? (
+      <>
+        {sections.map((section) => (
+          <section class="track-section">
+            <div class="track-section-head">
+              <TrackIcon name={section.icon} />
+              <h2>{section.heading}</h2>
+            </div>
+            {section.paragraphs.map((p) => <p>{p}</p>)}
+          </section>
+        ))}
+        {closing && <p class="track-closing">{closing}</p>}
+      </>
+    ) : (
+      <>
+        <div class="field">
+          <span class="label">קהל היעד</span>
+          <p>{audience}</p>
+        </div>
+        <div class="field">
+          <span class="label">מתכונת</span>
+          <p>{format}</p>
+        </div>
+        {scope !== format && (
+          <div class="field">
+            <span class="label">היקף</span>
+            <p>{scope}</p>
+          </div>
+        )}
 
-    <p class="pending">
-      זהו עמוד מסלול ראשוני. התוכן המלא - כולל הרחבה, דוגמאות ותהליך יצירת
-      קשר ייעודי - ייבנה בהמשך.
-    </p>
+        <p class="pending">
+          זהו עמוד מסלול ראשוני. התוכן המלא - כולל הרחבה, דוגמאות ותהליך יצירת
+          קשר ייעודי - ייבנה בהמשך.
+        </p>
+      </>
+    )}
   </article>
 </BaseLayout>

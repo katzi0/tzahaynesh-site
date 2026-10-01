@@ -592,6 +592,56 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   line-height: 1.7;
 }
 
+/* ---------- track pages with her full text ---------- */
+
+.track-section {
+  padding-block: 28px 8px;
+  border-top: 1px solid var(--hairline);
+}
+
+.track-section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.track-section-head h2 {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Every section icon on every track: one badge, one palette. */
+.section-icon {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--sage-soft);
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-section p {
+  margin: 0 0 1.1em;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+.track-closing {
+  margin: 12px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--sage);
+}
+
 /* ---------- About page ---------- */
 
 .about-page {
