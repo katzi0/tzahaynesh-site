@@ -10,16 +10,16 @@ const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
 // first substantial thing a visitor reads — see "The one artistic gesture"
 // in docs/specs/0001.
 const positioningLine =
-  "אני מלווה אנשים ברגעים של התבוננות, קושי ושינוי, ומלווה אנשי מקצוע וצוותים להעמיק את המפגש עם האדם שמולם — לראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.";
+  "אני מלווה אנשים ברגעים של התבוננות, קושי ושינוי, ומלווה אנשי מקצוע וצוותים להעמיק את המפגש עם האדם שמולם - לראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.";
 
 // Her own definition of cultural humility, verbatim from the chosen About
 // copy in brief §07 (the sentence itself, not the omitted-name sentence
 // beside it — see ADR 0001). Not the isolated/gated field.
 const humilityDefinition =
-  "עבורי, ענווה תרבותית אינה עוסקת רק בעבודה עם אוכלוסיות מסוימות — אלא בדרך שבה אנחנו פוגשים כל אדם: בסקרנות, ברגישות ובנכונות לבחון גם את ההנחות והערכים שאנחנו עצמנו מביאים למפגש.";
+  "עבורי, ענווה תרבותית אינה עוסקת רק בעבודה עם אוכלוסיות מסוימות - אלא בדרך שבה אנחנו פוגשים כל אדם: בסקרנות, ברגישות ובנכונות לבחון גם את ההנחות והערכים שאנחנו עצמנו מביאים למפגש.";
 
 const credentials = [
-  "M.A. תרפיה באמנויות — דרמה תרפיה",
+  "M.A. תרפיה באמנויות - דרמה תרפיה",
   "תוכנית CBT דו־שנתית, אוניברסיטת חיפה",
   "ACT ומיינדפולנס",
   "מדריכה רשומה (יה״ת)",
@@ -36,8 +36,8 @@ const contactChannels = [
 ---
 
 <BaseLayout
-  title="צהיינש אדל־קרוט — פסיכותרפיה, הדרכה קלינית וייעוץ"
-  description="צהיינש אדל־קרוט: פסיכותרפיה, הדרכה קלינית והדרכת הורים, הרצאות והכשרות, וייעוץ לארגונים ולאקדמיה — מתוך גישת הענווה התרבותית."
+  title="צהיינש אדל־קרוט - פסיכותרפיה, הדרכה קלינית וייעוץ"
+  description="צהיינש אדל־קרוט: פסיכותרפיה, הדרכה קלינית והדרכת הורים, הרצאות והכשרות, וייעוץ לארגונים ולאקדמיה - מתוך גישת הענווה התרבותית."
 >
   <section class="hero" aria-label="פתיח">
     <div class="hero-content">
@@ -93,7 +93,7 @@ const contactChannels = [
 
   <section class="humility" aria-label="ענווה תרבותית">
     <div class="humility-in">
-      <h2>ענווה תרבותית</h2>
+      <h2>ענווה תרבותית (Cultural Humility)</h2>
       <p>{humilityDefinition}</p>
     </div>
   </section>
@@ -101,7 +101,7 @@ const contactChannels = [
   <section id="contact" class="contact" aria-label="צרו קשר">
     <div class="contact-heading">
       <h2>צרו קשר</h2>
-      <p>פרטי ההתקשרות בדרך — הערוצים שנבחרו מופיעים כאן ברגע שיאושרו.</p>
+      <p>פרטי ההתקשרות בדרך - הערוצים שנבחרו מופיעים כאן ברגע שיאושרו.</p>
     </div>
     <div class="contact-channels">
       {contactChannels.map((c) => (

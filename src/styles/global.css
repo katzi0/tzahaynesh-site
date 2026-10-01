@@ -214,7 +214,11 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
 .main-nav a.is-current { color: var(--text-dark); font-weight: 600; }
 .main-nav a:hover { text-decoration: none; color: var(--terracotta); }
 
-.main-nav .btn-header { margin-inline-start: auto; }
+/* .main-nav a's two-part selector otherwise outranks .btn-header alone and
+   wins the color, leaving the CTA's text in --text-body on a sage
+   background - unreadable. Reassert white explicitly here. */
+.main-nav .btn-header { margin-inline-start: auto; color: #fff; }
+.main-nav .btn-header:hover { color: #fff; }
 
 /* ---------- hero ---------- */
 
