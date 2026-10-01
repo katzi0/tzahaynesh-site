@@ -1,10 +1,10 @@
 ---
 // About — her biography, in her own words (supplied text, lightly
-// proofread). A second portrait, different from the hero's, sits under the
-// heading.
+// proofread). Her portrait sits under the heading; the hero carries the
+// theme's illustration instead.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import aboutPortrait from "../assets/photos/portrait-about.jpg";
+import aboutPortrait from "../assets/photos/portrait.jpg";
 
 // ADR 0001: the joint venture is not named on this site. Her supplied text
 // reads "…בהקמת וניהול של מכון 'דרך ענווה'", which both names it and
@@ -24,7 +24,7 @@ const interculturalOrigin = "מתוך הדרך הזאת צמחה גם העשיי
     <div class="about-portrait">
       <Image
         src={aboutPortrait}
-        alt="צהיינש אדל־קרוט, מחייכת, בטורבן פרחוני וקרדיגן תחרה ורוד"
+        alt="צהיינש אדל־קרוט, מחייכת, בטורבן פרחוני וקרדיגן אדום־אלמוגי"
         widths={[260, 520]}
         sizes="260px"
       />
