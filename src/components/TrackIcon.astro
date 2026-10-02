@@ -1,8 +1,9 @@
 ---
-// Section icons for track pages. One fixed set, one viewBox, one stroke
-// weight, one color source (the badge's --sage on --sage-soft), so icons
-// across every track read as a single family. Add new names to
-// trackIcons.ts and draw them here rather than inlining an SVG on a page.
+// Section icons for track pages and type icons for library items. One
+// fixed set, one viewBox, one stroke weight, one color source (the badge's
+// --sage on --sage-soft), so every icon on the site reads as one family.
+// Add new names to trackIcons.ts and draw them here rather than inlining
+// an SVG on a page.
 import type { TrackIconName } from "./trackIcons";
 
 interface Props {
@@ -100,6 +101,50 @@ const { name } = Astro.props;
       <>
         <circle cx="12" cy="12" r="8.5"></circle>
         <path d="M12 7.5V12l3 2"></path>
+      </>
+    )}
+    {name === "article" && (
+      <>
+        <path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5Z"></path>
+        <path d="M14 3.5V7.5h4"></path>
+        <path d="M9 12h6"></path>
+        <path d="M9 15.5h6"></path>
+      </>
+    )}
+    {name === "research" && (
+      <>
+        <circle cx="10.5" cy="10.5" r="6"></circle>
+        <path d="M15 15l5 5"></path>
+        <path d="M8 12.5v-2"></path>
+        <path d="M10.5 12.5V8"></path>
+        <path d="M13 12.5v-3"></path>
+      </>
+    )}
+    {name === "video" && (
+      <>
+        <rect x="3.5" y="5.5" width="17" height="13" rx="2.5"></rect>
+        <path d="M10.5 9.3v5.4l4.5-2.7Z"></path>
+      </>
+    )}
+    {name === "podcast" && (
+      <>
+        <rect x="9" y="3.5" width="6" height="10" rx="3"></rect>
+        <path d="M6 11a6 6 0 0 0 12 0"></path>
+        <path d="M12 17v3.5"></path>
+        <path d="M9 20.5h6"></path>
+      </>
+    )}
+    {name === "lecture" && (
+      <>
+        <rect x="4" y="4" width="16" height="11" rx="1.5"></rect>
+        <path d="M12 15v3"></path>
+        <path d="M8.5 21 12 18l3.5 3"></path>
+        <path d="M8 11.5l2.5-2.5 2 2 3.5-3.5"></path>
+      </>
+    )}
+    {name === "bookmark" && (
+      <>
+        <path d="M7 3.5h10a1 1 0 0 1 1 1v16l-6-4-6 4v-16a1 1 0 0 1 1-1Z"></path>
       </>
     )}
   </svg>

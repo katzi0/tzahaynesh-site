@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { trackIcons } from "./components/trackIcons";
+import { libraryTypeKeys } from "./components/libraryTypes";
 
 // The five מסלולים, as one collection. Nav, the home-page track list, the
 // track stub pages, and the footer all read from this — nothing hard-codes
@@ -55,4 +56,25 @@ const tracks = defineCollection({
   }),
 });
 
-export const collections = { tracks };
+// The professional library (ספרייה מקצועית): material she collects and
+// curates, her own and others'. One YAML list so she can add an item
+// without touching code. Items link out; nothing of anyone else's is
+// hosted here.
+const library = defineCollection({
+  loader: file("src/content/library.yaml"),
+  schema: z.object({
+    type: z.enum(libraryTypeKeys),
+    title: z.string(),
+    // Author, speaker or source, as it should be credited.
+    creator: z.string(),
+    year: z.number().int().optional(),
+    // Her note on why it's here. This is what makes it curation rather
+    // than a list of links.
+    note: z.string(),
+    url: z.string().url().optional(),
+    // Her own work, whatever its type.
+    mine: z.boolean().default(false),
+  }),
+});
+
+export const collections = { tracks, library };

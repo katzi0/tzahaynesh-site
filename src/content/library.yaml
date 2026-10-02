@@ -1,0 +1,88 @@
+# MOCK DATA for the library proof of concept. Every item below is invented
+# to show the layout; none of it is real material. Replace the whole file
+# with her items before the page is linked from the nav.
+#
+# Each entry: a unique key, then type (article / research / chapter / video /
+# podcast / lecture / recommendation), title, creator, year, note (why she
+# recommends it), url (optional), mine (true for her own work).
+
+mock-own-article:
+  type: article
+  title: "כשהמטפלת לא יודעת: על ענווה תרבותית בחדר הטיפול"
+  creator: "צהיינש אדל־קרוט"
+  year: 2025
+  note: "מאמר שכתבתי על הרגעים שבהם הידע המקצועי פוגש את הגבול שלו, ומה אפשר ללמוד מהם."
+  url: "https://example.com/"
+  mine: true
+
+mock-own-lecture:
+  type: lecture
+  title: "הורות בין שתי תרבויות"
+  creator: "צהיינש אדל־קרוט"
+  year: 2024
+  note: "הרצאה מוקלטת מכנס מקצועי, על מה שקורה כשבבית אחד נפגשים שני סיפורי הורות."
+  url: "https://example.com/"
+  mine: true
+
+mock-own-podcast:
+  type: podcast
+  title: "שיחה על הגירה, זהות ומשפחה"
+  creator: "פודקאסט לדוגמה, פרק 12"
+  year: 2023
+  note: "התארחתי לשיחה על עבודה טיפולית עם מתבגרים במשפחות מהגרים."
+  url: "https://example.com/"
+  mine: true
+
+mock-research:
+  type: research
+  title: "ענווה תרבותית והברית הטיפולית: סקירה שיטתית"
+  creator: "מחברים לדוגמה, כתב עת לדוגמה"
+  year: 2022
+  note: "סקירה שמרכזת את מה שידוע היום על הקשר בין עמדה של ענווה תרבותית לבין איכות הקשר הטיפולי."
+  url: "https://example.com/"
+
+mock-article:
+  type: article
+  title: "ACT במפגש עם קהילות מסורתיות"
+  creator: "מחברת לדוגמה"
+  year: 2021
+  note: "דוגמה טובה לבחינה של מודל קיים מול מציאות תרבותית שונה, במקום לייבא אותו כמו שהוא."
+  url: "https://example.com/"
+
+mock-chapter:
+  type: chapter
+  title: "פרק 4: המטפל כחלק מהמערכת"
+  creator: "מתוך ספר לדוגמה על חשיבה מערכתית"
+  year: 2019
+  note: "פרק שאני חוזרת אליו בהדרכה, על האופן שבו המטפל הוא גם חלק ממה שהוא מתבונן בו."
+
+mock-video:
+  type: video
+  title: "מהי ענווה תרבותית? הסבר בעשר דקות"
+  creator: "ערוץ לדוגמה"
+  year: 2020
+  note: "סרטון קצר ונגיש שמתאים לפתיחת סדנה או לשיתוף עם צוות שפוגש את הגישה לראשונה."
+  url: "https://example.com/"
+
+mock-podcast:
+  type: podcast
+  title: "הורים, מתבגרים ומה שביניהם"
+  creator: "פודקאסט לדוגמה"
+  year: 2023
+  note: "סדרת פרקים שאני ממליצה עליה להורים שרוצים להבין טוב יותר את מה שקורה בגיל ההתבגרות."
+  url: "https://example.com/"
+
+mock-lecture:
+  type: lecture
+  title: "טיפול מותאם תרבות: עקרונות ודילמות"
+  creator: "מרצה לדוגמה"
+  year: 2022
+  note: "הרצאה שמציגה בבהירות את הדילמות, בלי להציע תשובות קלות."
+  url: "https://example.com/"
+
+mock-recommendation:
+  type: recommendation
+  title: "ספר לדוגמה על הגירה ומשפחה"
+  creator: "מחבר לדוגמה"
+  year: 2018
+  note: "ספר שאני ממליצה עליו למטפלים שעובדים עם משפחות שעברו הגירה. קריאה שמזמינה להתבונן גם בעצמנו."

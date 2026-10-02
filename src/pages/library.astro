@@ -1,0 +1,132 @@
+---
+// Proof of concept for the professional library (ספרייה מקצועית), her idea
+// for growing "מאמרים" into a curated collection of many content types.
+// Not linked from the nav yet; /articles stays as it is until she decides.
+// The items come from src/content/library.yaml, which is mock data for now.
+//
+// Filters are progressive: without JavaScript every item shows and the
+// filter bar stays hidden.
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrackIcon from "../components/TrackIcon.astro";
+import { libraryTypes, libraryTypeKeys } from "../components/libraryTypes";
+
+const items = (await getCollection("library")).sort(
+  (a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
+);
+
+// Only offer filters for types that have at least one item.
+const typeCounts = libraryTypeKeys
+  .map((key) => ({ key, count: items.filter((i) => i.data.type === key).length }))
+  .filter((t) => t.count > 0);
+const mineCount = items.filter((i) => i.data.mine).length;
+---
+
+<BaseLayout
+  title="ספרייה מקצועית - צהיינש אדל־קרוט"
+  description="ספרייה מקצועית: מאמרים ומחקרים, פרקים, סרטונים, פודקאסטים, הרצאות והמלצות קריאה שצהיינש אדל־קרוט אוספת ואוצרת, לצד תכנים משלה."
+>
+  <article class="library-page">
+    <p class="eyebrow">ספרייה מקצועית</p>
+    <h1>ספרייה מקצועית</h1>
+    <p class="library-lead">
+      חומרים מקצועיים שאני אוספת ואוצרת לאורך הזמן: מאמרים ומחקרים, פרקים,
+      סרטונים, פודקאסטים, הרצאות, המלצות קריאה וגם תכנים שלי.
+    </p>
+
+    <p class="pending" role="note">
+      <strong>נתוני דוגמה.</strong> הפריטים בעמוד הומצאו כדי להמחיש את המבנה,
+      ואינם חומרים אמיתיים.
+    </p>
+
+    <div class="library-filters" data-filters hidden>
+      <div class="filter-group" role="group" aria-label="סינון לפי סוג תוכן">
+        <button type="button" class="filter-chip" data-type="all" aria-pressed="true">
+          הכל <span class="filter-count">{items.length}</span>
+        </button>
+        {typeCounts.map((t) => (
+          <button type="button" class="filter-chip" data-type={t.key} aria-pressed="false">
+            {libraryTypes[t.key].plural} <span class="filter-count">{t.count}</span>
+          </button>
+        ))}
+      </div>
+      {mineCount > 0 && (
+        <button type="button" class="filter-chip filter-mine" data-mine-toggle aria-pressed="false">
+          רק התכנים שלי <span class="filter-count">{mineCount}</span>
+        </button>
+      )}
+    </div>
+
+    <p class="library-status" aria-live="polite" data-status>{items.length} פריטים</p>
+
+    <ul class="library-list">
+      {items.map(({ data }) => {
+        const t = libraryTypes[data.type];
+        return (
+          <li class="library-item" data-type={data.type} data-mine={String(data.mine)}>
+            <TrackIcon name={t.icon} />
+            <div class="library-body">
+              <p class="library-meta">
+                <span class="library-type">{t.label}</span>
+                {data.year && <span>{data.year}</span>}
+                {data.mine && <span class="mine-tag">שלי</span>}
+              </p>
+              <h2>{data.title}</h2>
+              <p class="library-creator">{data.creator}</p>
+              <p class="library-note">{data.note}</p>
+              {data.url && (
+                <a class="library-link" href={data.url} target="_blank" rel="noopener">
+                  {t.action}
+                  <span class="visually-hidden"> - {data.title} (נפתח בחלון חדש)</span>
+                  <span aria-hidden="true">‹</span>
+                </a>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="library-empty" data-empty hidden>אין עדיין פריטים שמתאימים לסינון הזה.</p>
+  </article>
+</BaseLayout>
+
+<script>
+  const filters = document.querySelector<HTMLElement>("[data-filters]");
+  const status = document.querySelector<HTMLElement>("[data-status]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  const items = [...document.querySelectorAll<HTMLElement>(".library-item")];
+  const typeButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-type].filter-chip")];
+  const mineToggle = document.querySelector<HTMLButtonElement>("[data-mine-toggle]");
+
+  let type = "all";
+  let mineOnly = false;
+
+  const apply = () => {
+    let shown = 0;
+    for (const item of items) {
+      const visible =
+        (type === "all" || item.dataset.type === type) &&
+        (!mineOnly || item.dataset.mine === "true");
+      item.hidden = !visible;
+      if (visible) shown++;
+    }
+    for (const b of typeButtons) b.setAttribute("aria-pressed", String(b.dataset.type === type));
+    mineToggle?.setAttribute("aria-pressed", String(mineOnly));
+    if (status) status.textContent = shown === 1 ? "פריט אחד" : `${shown} פריטים`;
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  for (const b of typeButtons) {
+    b.addEventListener("click", () => {
+      type = b.dataset.type ?? "all";
+      apply();
+    });
+  }
+  mineToggle?.addEventListener("click", () => {
+    mineOnly = !mineOnly;
+    apply();
+  });
+
+  if (filters) filters.hidden = false;
+</script>

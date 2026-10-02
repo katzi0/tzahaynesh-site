@@ -1,6 +1,6 @@
-// The one list of track section icon names. The content schema validates
-// against it and TrackIcon.astro draws each one, so a name can't exist in
-// one place and not the other.
+// The one list of icon names for track sections and library items. The
+// content schemas validate against it and TrackIcon.astro draws each one,
+// so a name can't exist in one place and not the other.
 export const trackIcons = [
   "people",
   "integrate",
@@ -14,6 +14,12 @@ export const trackIcons = [
   "seedling",
   "calendar",
   "clock",
+  "article",
+  "research",
+  "video",
+  "podcast",
+  "lecture",
+  "bookmark",
 ] as const;
 
 export type TrackIconName = (typeof trackIcons)[number];
