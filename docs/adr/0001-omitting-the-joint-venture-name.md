@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: accepted, amended 2026-10-02
 ---
 
 # Omitting the joint venture's name
@@ -24,3 +24,15 @@ people is a dispute waiting to be indexed, so the wording must be confirmed with
 launch rather than inferred from the brief. And if the joint site stays up carrying her
 biography, both pages will surface for her name, making the separation visible to anyone who
 searches — which is a decision about the old site, not something this site can solve.
+
+## Amendment, 2 Oct 2026
+
+Her full text for the ארגונים ואקדמיה track names the venture: "הייתי שותפה להקמה,
+פיתוח וניהול של מסגרות טיפוליות ומקצועיות, ובהן מרכז נועם ומכון דרך ענווה". The
+commissioner chose to publish it as she wrote it. Her own wording makes her a partner
+(*שותפה*) in founding it, which matches the venture's site crediting two founders, so the
+first risk above doesn't apply to this sentence.
+
+The name now appears on that track page only. The About page still isolates the
+venture sentence in `interculturalOrigin` without the name; whether to name it there too
+is a separate decision. The second risk (both sites surfacing for her name) is unchanged.

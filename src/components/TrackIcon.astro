@@ -1,10 +1,12 @@
 ---
 // Section icons for track pages. One fixed set, one viewBox, one stroke
 // weight, one color source (the badge's --sage on --sage-soft), so icons
-// across every track read as a single family. Add new names here and to the
-// enum in content.config.ts rather than inlining an SVG on a page.
+// across every track read as a single family. Add new names to
+// trackIcons.ts and draw them here rather than inlining an SVG on a page.
+import type { TrackIconName } from "./trackIcons";
+
 interface Props {
-  name: "people" | "integrate" | "dialogue";
+  name: TrackIconName;
 }
 const { name } = Astro.props;
 ---
@@ -28,6 +30,76 @@ const { name } = Astro.props;
       <>
         <path d="M6.5 4h7A2.5 2.5 0 0 1 16 6.5v4A2.5 2.5 0 0 1 13.5 13H9l-3 3v-3.2A2.5 2.5 0 0 1 4 10.5v-4A2.5 2.5 0 0 1 6.5 4Z"></path>
         <path d="M18.5 9A1.8 1.8 0 0 1 20 10.8v3.7a2 2 0 0 1-2 2V19l-2.8-2.5H12a2 2 0 0 1-1.8-1.1"></path>
+      </>
+    )}
+    {name === "compass" && (
+      <>
+        <circle cx="12" cy="12" r="8.5"></circle>
+        <path d="M15.5 8.5l-2.1 4.9-4.9 2.1 2.1-4.9Z"></path>
+      </>
+    )}
+    {name === "context" && (
+      <>
+        <circle cx="12" cy="12" r="9"></circle>
+        <circle cx="12" cy="12" r="5.6"></circle>
+        <circle cx="12" cy="10.6" r="1.5"></circle>
+        <path d="M9.6 14.6c.5-1.1 1.4-1.7 2.4-1.7s1.9.6 2.4 1.7"></path>
+      </>
+    )}
+    {name === "family" && (
+      <>
+        <circle cx="7" cy="7.8" r="2.5"></circle>
+        <path d="M3 20.5v-4.5a4 4 0 0 1 8 0v4.5"></path>
+        <circle cx="17" cy="12.5" r="1.8"></circle>
+        <path d="M14.2 20.5v-2.4a2.8 2.8 0 0 1 5.6 0v2.4"></path>
+        <path d="M11 17.6h3.2"></path>
+      </>
+    )}
+    {name === "roots" && (
+      <>
+        <path d="M8 13.5a3.5 3.5 0 0 1-.6-6.95A4.5 4.5 0 0 1 16 6.2a3.5 3.5 0 0 1 .5 7.3Z"></path>
+        <path d="M12 13.5V18"></path>
+        <path d="M12 18v2.8"></path>
+        <path d="M12 18c-.5 1.4-2 2.3-4.2 2.8"></path>
+        <path d="M12 18c.5 1.4 2 2.3 4.2 2.8"></path>
+      </>
+    )}
+    {name === "network" && (
+      <>
+        <circle cx="12" cy="5.5" r="2.2"></circle>
+        <circle cx="5.5" cy="17.5" r="2.2"></circle>
+        <circle cx="18.5" cy="17.5" r="2.2"></circle>
+        <path d="M10.95 7.43 6.55 15.57"></path>
+        <path d="M13.05 7.43l4.4 8.14"></path>
+        <path d="M7.7 17.5h8.6"></path>
+      </>
+    )}
+    {name === "book" && (
+      <>
+        <path d="M12 6.5c-2-1.4-4.6-2-8-2v13c3.4 0 6 .6 8 2 2-1.4 4.6-2 8-2v-13c-3.4 0-6 .6-8 2Z"></path>
+        <path d="M12 6.5v13"></path>
+      </>
+    )}
+    {name === "seedling" && (
+      <>
+        <path d="M12 20v-8.5"></path>
+        <path d="M12 13.5c-4.3 0-6.8-2.4-6.8-6.3 4.3 0 6.8 2.4 6.8 6.3Z"></path>
+        <path d="M12 11.5c0-3.5 2.2-5.8 6.3-5.8 0 3.5-2.3 5.8-6.3 5.8Z"></path>
+        <path d="M7 20h10"></path>
+      </>
+    )}
+    {name === "calendar" && (
+      <>
+        <rect x="4" y="5.5" width="16" height="14.5" rx="2.5"></rect>
+        <path d="M4 10h16"></path>
+        <path d="M8.5 3.5v4"></path>
+        <path d="M15.5 3.5v4"></path>
+      </>
+    )}
+    {name === "clock" && (
+      <>
+        <circle cx="12" cy="12" r="8.5"></circle>
+        <path d="M12 7.5V12l3 2"></path>
       </>
     )}
   </svg>

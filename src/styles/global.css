@@ -625,10 +625,59 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   justify-content: center;
 }
 
+.track-tagline {
+  margin: -6px 0 6px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--sage);
+}
+
+.track-intro p,
 .track-section p {
   margin: 0 0 1.1em;
   font-size: 17px;
   line-height: 1.85;
+  color: var(--text-body);
+}
+
+/* Her own emphasis, marked in the content file. */
+.stub-page strong {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Audience / format / scope, after her text. */
+.track-details {
+  margin-top: 12px;
+  padding: 8px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+}
+
+.track-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-block: 20px;
+}
+
+.track-detail + .track-detail { border-top: 1px solid var(--hairline); }
+
+.track-detail h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--sage);
+}
+
+.track-detail p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
   color: var(--text-body);
 }
 
@@ -732,4 +781,7 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   }
   .hero-content h1 { font-size: 32px; }
   .contact-channels { grid-template-columns: 1fr; }
+  .track-details { padding: 4px 18px; }
+  .track-detail { gap: 12px; }
+  .track-tagline { font-size: 20px; }
 }

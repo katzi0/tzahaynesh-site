@@ -73,5 +73,6 @@ for, not by who they are.
 
 **דרך ענווה / Derech Anava**:
 The two-person consulting and training venture she ran with Tamar, described on its own
-public site as founded by both of them. Its name does not appear on this site; the body of
-work does. See `docs/adr/0001-omitting-the-joint-venture-name.md`.
+public site as founded by both of them. The About page omits its name; the ארגונים ואקדמיה
+track names it in her own words, as one of the frameworks she co-founded. See
+`docs/adr/0001-omitting-the-joint-venture-name.md` and its amendment.

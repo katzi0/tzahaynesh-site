@@ -1,13 +1,15 @@
 ---
-// One route generates all five track stub pages from the content
-// collection — no per-track file to keep in sync. See docs/specs/0001,
-// "Five minimal track routes": these carry only the canonical title, the
-// audience line and the scope line from brief §06. Real content is
-// separate work, out of scope here.
+// One route generates all five track pages from the content collection —
+// no per-track file to keep in sync. A track with her full text (sections)
+// renders tagline, intro, sections, closing and an optional details panel;
+// a track without it keeps the audience/format/scope stub from brief §06
+// (docs/specs/0001, "Five minimal track routes").
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TrackIcon from "../../components/TrackIcon.astro";
+import { emphasize, plain } from "../../components/emphasis";
+import type { TrackIconName } from "../../components/trackIcons";
 import lecturePhoto from "../../assets/photos/lecture.webp";
 
 // Track-specific photographs, keyed by slug. Only tracks with a photo that
@@ -28,17 +30,24 @@ export async function getStaticPaths() {
 }
 
 const { track } = Astro.props;
-const { title, audience, format, scope, slug, sections, closing } = track.data;
+const { title, audience, format, scope, slug, tagline, intro, sections, closing, showDetails } = track.data;
 const photo = trackPhotos[slug as keyof typeof trackPhotos];
+
+const details: { icon: TrackIconName; label: string; text: string }[] = [
+  { icon: "people", label: "קהל היעד", text: audience },
+  { icon: "calendar", label: "מתכונת", text: format },
+  ...(scope !== format ? [{ icon: "clock" as const, label: "היקף", text: scope }] : []),
+];
 ---
 
 <BaseLayout
   title={`${title} - צהיינש אדל־קרוט`}
-  description={`${title}: ${audience}`}
+  description={`${title}: ${plain(audience)}`}
 >
   <article class="stub-page">
     <p class="eyebrow">מסלול</p>
     <h1>{title}</h1>
+    {tagline && <p class="track-tagline">{tagline}</p>}
 
     {photo && (
       <figure class="track-photo">
@@ -48,16 +57,34 @@ const photo = trackPhotos[slug as keyof typeof trackPhotos];
 
     {sections ? (
       <>
+        {intro && (
+          <div class="track-intro">
+            {intro.map((p) => <p set:html={emphasize(p)} />)}
+          </div>
+        )}
         {sections.map((section) => (
           <section class="track-section">
             <div class="track-section-head">
               <TrackIcon name={section.icon} />
               <h2>{section.heading}</h2>
             </div>
-            {section.paragraphs.map((p) => <p>{p}</p>)}
+            {section.paragraphs.map((p) => <p set:html={emphasize(p)} />)}
           </section>
         ))}
         {closing && <p class="track-closing">{closing}</p>}
+        {showDetails && (
+          <section class="track-details" aria-label="פרטים מעשיים">
+            {details.map((d) => (
+              <div class="track-detail">
+                <TrackIcon name={d.icon} />
+                <div>
+                  <h2>{d.label}</h2>
+                  <p set:html={emphasize(d.text)} />
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
       </>
     ) : (
       <>

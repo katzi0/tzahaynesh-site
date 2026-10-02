@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { trackIcons } from "./components/trackIcons";
 
 // The five מסלולים, as one collection. Nav, the home-page track list, the
 // track stub pages, and the footer all read from this — nothing hard-codes
@@ -28,6 +29,11 @@ const tracks = defineCollection({
     format: z.string(),
     // Scope line from brief §06, for the stub page.
     scope: z.string(),
+    // Her opening line, set under the title.
+    tagline: z.string().optional(),
+    // Her opening paragraphs, before the first section heading.
+    // Paragraphs anywhere on a track page may mark her emphasis as **…**.
+    intro: z.array(z.string()).min(1).optional(),
     // Her full text for the track, once she supplies it. When present the
     // page renders these sections instead of the audience/format/scope stub.
     // Icons come from a fixed set in TrackIcon.astro so every track shares
@@ -35,7 +41,7 @@ const tracks = defineCollection({
     sections: z
       .array(
         z.object({
-          icon: z.enum(["people", "integrate", "dialogue"]),
+          icon: z.enum(trackIcons),
           heading: z.string(),
           paragraphs: z.array(z.string()).min(1),
         }),
@@ -43,6 +49,9 @@ const tracks = defineCollection({
       .optional(),
     // Closing statement set apart after the sections.
     closing: z.string().optional(),
+    // Show audience/format/scope as a closing panel after the sections. Off
+    // for tracks whose full text already covers its audience in a section.
+    showDetails: z.boolean().default(false),
   }),
 });
 
