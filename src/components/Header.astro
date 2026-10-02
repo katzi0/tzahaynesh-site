@@ -14,6 +14,9 @@ const base = import.meta.env.BASE_URL;
 const home = base;
 const about = `${base}about`;
 const articles = `${base}articles`;
+// Library proof of concept, linked beside מאמרים while she decides whether
+// it replaces it.
+const library = `${base}library`;
 const contact = `${base}#contact`;
 const trackHref = (slug: string) => `${base}tracks/${slug}`;
 
@@ -57,6 +60,7 @@ function isCurrent(href: string) {
     })}
     <a href={about} class={isCurrent(about) ? "is-current" : undefined} aria-current={isCurrent(about) ? "page" : undefined}>אודות</a>
     <a href={articles} class={isCurrent(articles) ? "is-current" : undefined} aria-current={isCurrent(articles) ? "page" : undefined}>מאמרים</a>
+    <a href={library} class={isCurrent(library) ? "is-current" : undefined} aria-current={isCurrent(library) ? "page" : undefined}>ספרייה</a>
     <a href={contact} class="btn btn-header">יצירת קשר</a>
   </nav>
 </header>
