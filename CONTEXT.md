@@ -65,6 +65,10 @@ practice).
 A structured programme for professionals — a workshop, learning day or series. Distinct
 from הוראה, which sits inside an academic curriculum.
 
+**הרצאות והכשרות בגישת ענווה תרבותית / Lectures and training in the cultural-humility approach**:
+The fourth track's full title, her own (Nov 2026). Shortened to **הרצאות והכשרות** in the
+header and footer nav only, where the full title runs long.
+
 **מסלול / Track**:
 One of the routes the site offers a visitor. Tracks organise the site by what someone came
 for, not by who they are.
@@ -73,6 +77,7 @@ for, not by who they are.
 
 **דרך ענווה / Derech Anava**:
 The two-person consulting and training venture she ran with Tamar, described on its own
-public site as founded by both of them. The About page omits its name; the ארגונים ואקדמיה
-track names it in her own words, as one of the frameworks she co-founded. See
-`docs/adr/0001-omitting-the-joint-venture-name.md` and its amendment.
+public site as founded by both of them. Named on the site in her own words only, as one of
+the frameworks she founded and managed: on the ארגונים ואקדמיה track (since Oct 2026) and on
+the About page (since Nov 2026). See `docs/adr/0001-omitting-the-joint-venture-name.md` and
+its amendments.

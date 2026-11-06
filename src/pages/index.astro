@@ -6,11 +6,14 @@ import { getCollection } from "astro:content";
 const tracksRaw = await getCollection("tracks");
 const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
 
-// Positioning line, verbatim from brief §07 (HOME · HERO). Intended as the
-// first substantial thing a visitor reads — see "The one artistic gesture"
-// in docs/specs/0001.
-const positioningLine =
-  "אני מלווה אנשים ברגעים של התבוננות, קושי ושינוי, ומלווה אנשי מקצוע וצוותים להעמיק את המפגש עם האדם שמולם - לראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.";
+// Positioning text, verbatim from her replacement copy (shared doc, Nov
+// 2026). The first substantial thing a visitor reads — see "The one artistic
+// gesture" in docs/specs/0001.
+const positioningLines = [
+  "כבר קרוב לשני עשורים אני עוסקת בטיפול, בהדרכה, בהוראה ובהכשרת אנשי מקצוע, ומלווה הורים, צוותים וארגונים בתהליכי התפתחות ושינוי.",
+  "לאורך השנים למדתי שאין דרך אחת נכונה להבין אדם או ליצור שינוי. כל אדם, משפחה ומערכת מביאים איתם סיפור, זהות, הקשר וכוחות משלהם.",
+  "אני מאמינה בלראות מעבר למובן מאליו, להקשיב בסקרנות ולתת מקום לסיפור, לזהות ולתרבות שכל אחד מביא איתו.",
+];
 
 // Her own definition of cultural humility, verbatim from the chosen About
 // copy in brief §07 (the sentence itself, not the omitted-name sentence
@@ -21,7 +24,9 @@ const humilityDefinition =
 const credentials = [
   "M.A. תרפיה באמנויות - דרמה תרפיה",
   "תוכנית CBT דו־שנתית, אוניברסיטת חיפה",
-  "ACT ומיינדפולנס",
+  "פסיכותרפיה CBT מבוסס מיינדפולנס ו־ACT",
+  "הדרכת הורים בגישת אדלר",
+  "תקשורת מקרבת (NVC)",
   "מדריכה רשומה (יה״ת)",
   "למעלה מ־20 שנות עבודה",
 ];
@@ -59,7 +64,9 @@ const contactChannels = [
   </section>
 
   <section class="positioning" aria-label="שורת פתיחה">
-    <blockquote>{positioningLine}</blockquote>
+    <blockquote>
+      {positioningLines.map((line) => <p>{line}</p>)}
+    </blockquote>
   </section>
 
   <section class="credentials" aria-label="הכשרה וניסיון">

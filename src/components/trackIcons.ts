@@ -20,6 +20,8 @@ export const trackIcons = [
   "podcast",
   "lecture",
   "bookmark",
+  "breath",
+  "music",
 ] as const;
 
 export type TrackIconName = (typeof trackIcons)[number];

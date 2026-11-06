@@ -15,10 +15,9 @@ const base = import.meta.env.BASE_URL;
   <nav class="footer-nav" aria-label="ניווט תחתון">
     <a href={base}>דף הבית</a>
     {tracks.map((track) => (
-      <a href={`${base}tracks/${track.data.slug}`}>{track.data.title}</a>
+      <a href={`${base}tracks/${track.data.slug}`}>{track.data.navTitle ?? track.data.title}</a>
     ))}
     <a href={`${base}about`}>אודות</a>
-    <a href={`${base}articles`}>מאמרים</a>
     <a href={`${base}library`}>ספרייה</a>
     <a href={`${base}#contact`}>צרו קשר</a>
   </nav>

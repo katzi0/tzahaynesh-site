@@ -142,6 +142,21 @@ const { name } = Astro.props;
         <path d="M8 11.5l2.5-2.5 2 2 3.5-3.5"></path>
       </>
     )}
+    {name === "breath" && (
+      <>
+        <path d="M3.5 8.5c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 3-1.4 4-1"></path>
+        <path d="M3.5 13c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 3-1.4 4-1"></path>
+        <path d="M3.5 17.5c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 3-1.4 4-1"></path>
+      </>
+    )}
+    {name === "music" && (
+      <>
+        <path d="M9 17.5V5.5l10-2v12"></path>
+        <circle cx="6.5" cy="17.5" r="2.5"></circle>
+        <circle cx="16.5" cy="15.5" r="2.5"></circle>
+        <path d="M9 9l10-2"></path>
+      </>
+    )}
     {name === "bookmark" && (
       <>
         <path d="M7 3.5h10a1 1 0 0 1 1 1v16l-6-4-6 4v-16a1 1 0 0 1 1-1Z"></path>

@@ -1,10 +1,11 @@
-# MOCK DATA for the library proof of concept. Every item below is invented
-# to show the layout; none of it is real material. Replace the whole file
-# with her items before the page is linked from the nav.
+# MOCK DATA. Every item below is invented to show the layout; none of it is
+# real material, and the page says so. Replace the whole file with her items
+# before launch.
 #
 # Each entry: a unique key, then type (article / research / chapter / video /
-# podcast / lecture / recommendation), title, creator, year, note (why she
-# recommends it), url (optional), mine (true for her own work).
+# podcast / lecture / recommendation / exercise / song), title, creator, year,
+# note (why she recommends it), url (optional), mine (true for her own work),
+# topic (optional: parenting / culture / regulation / practice).
 
 mock-own-article:
   type: article
@@ -12,6 +13,7 @@ mock-own-article:
   creator: "צהיינש אדל־קרוט"
   year: 2025
   note: "מאמר שכתבתי על הרגעים שבהם הידע המקצועי פוגש את הגבול שלו, ומה אפשר ללמוד מהם."
+  topic: culture
   url: "https://example.com/"
   mine: true
 
@@ -21,6 +23,7 @@ mock-own-lecture:
   creator: "צהיינש אדל־קרוט"
   year: 2024
   note: "הרצאה מוקלטת מכנס מקצועי, על מה שקורה כשבבית אחד נפגשים שני סיפורי הורות."
+  topic: parenting
   url: "https://example.com/"
   mine: true
 
@@ -30,6 +33,7 @@ mock-own-podcast:
   creator: "פודקאסט לדוגמה, פרק 12"
   year: 2023
   note: "התארחתי לשיחה על עבודה טיפולית עם מתבגרים במשפחות מהגרים."
+  topic: culture
   url: "https://example.com/"
   mine: true
 
@@ -39,6 +43,7 @@ mock-research:
   creator: "מחברים לדוגמה, כתב עת לדוגמה"
   year: 2022
   note: "סקירה שמרכזת את מה שידוע היום על הקשר בין עמדה של ענווה תרבותית לבין איכות הקשר הטיפולי."
+  topic: practice
   url: "https://example.com/"
 
 mock-article:
@@ -47,6 +52,7 @@ mock-article:
   creator: "מחברת לדוגמה"
   year: 2021
   note: "דוגמה טובה לבחינה של מודל קיים מול מציאות תרבותית שונה, במקום לייבא אותו כמו שהוא."
+  topic: culture
   url: "https://example.com/"
 
 mock-chapter:
@@ -55,6 +61,7 @@ mock-chapter:
   creator: "מתוך ספר לדוגמה על חשיבה מערכתית"
   year: 2019
   note: "פרק שאני חוזרת אליו בהדרכה, על האופן שבו המטפל הוא גם חלק ממה שהוא מתבונן בו."
+  topic: practice
 
 mock-video:
   type: video
@@ -62,6 +69,7 @@ mock-video:
   creator: "ערוץ לדוגמה"
   year: 2020
   note: "סרטון קצר ונגיש שמתאים לפתיחת סדנה או לשיתוף עם צוות שפוגש את הגישה לראשונה."
+  topic: culture
   url: "https://example.com/"
 
 mock-podcast:
@@ -70,6 +78,7 @@ mock-podcast:
   creator: "פודקאסט לדוגמה"
   year: 2023
   note: "סדרת פרקים שאני ממליצה עליה להורים שרוצים להבין טוב יותר את מה שקורה בגיל ההתבגרות."
+  topic: parenting
   url: "https://example.com/"
 
 mock-lecture:
@@ -78,6 +87,7 @@ mock-lecture:
   creator: "מרצה לדוגמה"
   year: 2022
   note: "הרצאה שמציגה בבהירות את הדילמות, בלי להציע תשובות קלות."
+  topic: practice
   url: "https://example.com/"
 
 mock-recommendation:
@@ -86,3 +96,31 @@ mock-recommendation:
   creator: "מחבר לדוגמה"
   year: 2018
   note: "ספר שאני ממליצה עליו למטפלים שעובדים עם משפחות שעברו הגירה. קריאה שמזמינה להתבונן גם בעצמנו."
+  topic: culture
+
+mock-exercise:
+  type: exercise
+  title: "תרגיל נשימה לוויסות ברגעי הצפה"
+  creator: "צהיינש אדל־קרוט"
+  note: "תרגיל קצר שאפשר לעשות לבד, בבית או בדרך, כשהרגשות מציפים ורוצים לחזור לקרקע."
+  url: "https://example.com/"
+  mine: true
+  topic: regulation
+
+mock-culture-podcast:
+  type: podcast
+  title: "שייכות, זהות ומה שביניהן"
+  creator: "פודקאסט לדוגמה, פרק 7"
+  year: 2024
+  note: "שיחה מעניינת על חיים בין כמה זהויות, שמתאימה גם לאנשי מקצוע וגם למי שפשוט סקרן."
+  url: "https://example.com/"
+  topic: culture
+
+mock-song:
+  type: song
+  title: "שיר לדוגמה על בית ומסע"
+  creator: "יוצרת לדוגמה"
+  year: 2015
+  note: "שיר שאני חוזרת אליו, על הגעגוע למקום שממנו באנו ועל הבית שאנחנו בונים מחדש."
+  url: "https://example.com/"
+  topic: culture

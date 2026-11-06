@@ -1,6 +1,6 @@
 ---
-// Nav reads the five tracks from the content collection, plus the two
-// static stub routes and the contact anchor. No label is typed twice — see
+// Nav reads the five tracks from the content collection, plus אודות,
+// ספרייה and the contact anchor. No label is typed twice — see
 // docs/specs/0001, "Canonical labels come from content, not markup".
 import { getCollection } from "astro:content";
 
@@ -13,9 +13,8 @@ const tracks = tracksRaw.sort((a, b) => a.data.order - b.data.order);
 const base = import.meta.env.BASE_URL;
 const home = base;
 const about = `${base}about`;
-const articles = `${base}articles`;
-// Library proof of concept, linked beside מאמרים while she decides whether
-// it replaces it.
+// The library replaced מאמרים at her request (Nov 2026); articles are one
+// of its content types.
 const library = `${base}library`;
 const contact = `${base}#contact`;
 const trackHref = (slug: string) => `${base}tracks/${slug}`;
@@ -54,12 +53,11 @@ function isCurrent(href: string) {
       const href = trackHref(track.data.slug);
       return (
         <a href={href} class={isCurrent(href) ? "is-current" : undefined} aria-current={isCurrent(href) ? "page" : undefined}>
-          {track.data.title}
+          {track.data.navTitle ?? track.data.title}
         </a>
       );
     })}
     <a href={about} class={isCurrent(about) ? "is-current" : undefined} aria-current={isCurrent(about) ? "page" : undefined}>אודות</a>
-    <a href={articles} class={isCurrent(articles) ? "is-current" : undefined} aria-current={isCurrent(articles) ? "page" : undefined}>מאמרים</a>
     <a href={library} class={isCurrent(library) ? "is-current" : undefined} aria-current={isCurrent(library) ? "page" : undefined}>ספרייה</a>
     <a href={contact} class="btn btn-header">יצירת קשר</a>
   </nav>

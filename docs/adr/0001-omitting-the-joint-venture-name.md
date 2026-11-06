@@ -1,5 +1,5 @@
 ---
-status: accepted, amended 2026-10-02
+status: accepted, amended 2026-10-02 and 2026-11-06
 ---
 
 # Omitting the joint venture's name
@@ -36,3 +36,16 @@ first risk above doesn't apply to this sentence.
 The name now appears on that track page only. The About page still isolates the
 venture sentence in `interculturalOrigin` without the name; whether to name it there too
 is a separate decision. The second risk (both sites surfacing for her name) is unchanged.
+
+## Amendment, 6 Nov 2026
+
+Her full About text of 4 Nov 2026 (shared doc) names the venture too: "משם הגעתי לעולם
+הטיפול, ובהמשך גם לניהול והקמה של מסגרות טיפוליות ומקצועיות, בהן מרכז נועם ומכון דרך
+ענווה". The commissioner chose to publish it as she wrote it, so the About page now names
+the venture and the `interculturalOrigin` placeholder is gone. The site no longer omits the
+name anywhere; the title of this ADR records where the decision started.
+
+Unlike the organizations text, this sentence does not say *שותפה*. It says she managed and
+founded frameworks, of which the venture is one, without saying she founded it alone, so the
+first risk is smaller than in the original brief but not gone: worth one confirming question
+to her before launch. The second risk (both sites surfacing for her name) is unchanged.

@@ -1,15 +1,21 @@
 ---
-// Proof of concept for the professional library (ספרייה מקצועית), her idea
-// for growing "מאמרים" into a curated collection of many content types.
-// Linked in the nav beside מאמרים; /articles stays as it is until she decides.
-// The items come from src/content/library.yaml, which is mock data for now.
+// The professional library (ספרייה מקצועית). At her request (shared doc,
+// Nov 2026) it replaces "מאמרים": articles are one content type here, beside
+// usable material such as regulation exercises, podcasts on parenting or
+// culture, songs and more. The items come from src/content/library.yaml,
+// which is mock data until she sends real items.
 //
 // Filters are progressive: without JavaScript every item shows and the
 // filter bar stays hidden.
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TrackIcon from "../components/TrackIcon.astro";
-import { libraryTypes, libraryTypeKeys } from "../components/libraryTypes";
+import {
+  libraryTypes,
+  libraryTypeKeys,
+  libraryTopics,
+  libraryTopicKeys,
+} from "../components/libraryTypes";
 
 const items = (await getCollection("library")).sort(
   (a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
@@ -19,19 +25,23 @@ const items = (await getCollection("library")).sort(
 const typeCounts = libraryTypeKeys
   .map((key) => ({ key, count: items.filter((i) => i.data.type === key).length }))
   .filter((t) => t.count > 0);
+const topicCounts = libraryTopicKeys
+  .map((key) => ({ key, count: items.filter((i) => i.data.topic === key).length }))
+  .filter((t) => t.count > 0);
 const mineCount = items.filter((i) => i.data.mine).length;
 ---
 
 <BaseLayout
   title="ספרייה מקצועית - צהיינש אדל־קרוט"
-  description="ספרייה מקצועית: מאמרים ומחקרים, פרקים, סרטונים, פודקאסטים, הרצאות והמלצות קריאה שצהיינש אדל־קרוט אוספת ואוצרת, לצד תכנים משלה."
+  description="ספרייה מקצועית: מאמרים, תרגילים וכלים, פודקאסטים בנושאי הורות ותרבות, שירים, הרצאות והמלצות קריאה שצהיינש אדל־קרוט אוספת ואוצרת, לצד תכנים משלה."
 >
   <article class="library-page">
     <p class="eyebrow">ספרייה מקצועית</p>
     <h1>ספרייה מקצועית</h1>
     <p class="library-lead">
-      חומרים מקצועיים שאני אוספת ואוצרת לאורך הזמן: מאמרים ומחקרים, פרקים,
-      סרטונים, פודקאסטים, הרצאות, המלצות קריאה וגם תכנים שלי.
+      חומרים שאני אוספת ואוצרת לאורך הזמן: מאמרים, תכנים שאפשר להשתמש בהם
+      בעצמכם כמו תרגילי ויסות, פודקאסטים מעניינים בנושאי הורות ותרבות, שירים
+      ועוד, וגם תכנים שלי.
     </p>
 
     <p class="pending" role="note">
@@ -50,6 +60,18 @@ const mineCount = items.filter((i) => i.data.mine).length;
           </button>
         ))}
       </div>
+      {topicCounts.length > 0 && (
+        <div class="filter-group" role="group" aria-label="סינון לפי נושא">
+          <button type="button" class="filter-chip" data-topic="all" aria-pressed="true">
+            כל הנושאים
+          </button>
+          {topicCounts.map((t) => (
+            <button type="button" class="filter-chip" data-topic={t.key} aria-pressed="false">
+              {libraryTopics[t.key]} <span class="filter-count">{t.count}</span>
+            </button>
+          ))}
+        </div>
+      )}
       {mineCount > 0 && (
         <button type="button" class="filter-chip filter-mine" data-mine-toggle aria-pressed="false">
           רק התכנים שלי <span class="filter-count">{mineCount}</span>
@@ -63,11 +85,12 @@ const mineCount = items.filter((i) => i.data.mine).length;
       {items.map(({ data }) => {
         const t = libraryTypes[data.type];
         return (
-          <li class="library-item" data-type={data.type} data-mine={String(data.mine)}>
+          <li class="library-item" data-type={data.type} data-topic={data.topic ?? ""} data-mine={String(data.mine)}>
             <TrackIcon name={t.icon} />
             <div class="library-body">
               <p class="library-meta">
                 <span class="library-type">{t.label}</span>
+                {data.topic && <span class="library-topic">{libraryTopics[data.topic]}</span>}
                 {data.year && <span>{data.year}</span>}
                 {data.mine && <span class="mine-tag">שלי</span>}
               </p>
@@ -97,9 +120,11 @@ const mineCount = items.filter((i) => i.data.mine).length;
   const empty = document.querySelector<HTMLElement>("[data-empty]");
   const items = [...document.querySelectorAll<HTMLElement>(".library-item")];
   const typeButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-type].filter-chip")];
+  const topicButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-topic].filter-chip")];
   const mineToggle = document.querySelector<HTMLButtonElement>("[data-mine-toggle]");
 
   let type = "all";
+  let topic = "all";
   let mineOnly = false;
 
   const apply = () => {
@@ -107,11 +132,13 @@ const mineCount = items.filter((i) => i.data.mine).length;
     for (const item of items) {
       const visible =
         (type === "all" || item.dataset.type === type) &&
+        (topic === "all" || item.dataset.topic === topic) &&
         (!mineOnly || item.dataset.mine === "true");
       item.hidden = !visible;
       if (visible) shown++;
     }
     for (const b of typeButtons) b.setAttribute("aria-pressed", String(b.dataset.type === type));
+    for (const b of topicButtons) b.setAttribute("aria-pressed", String(b.dataset.topic === topic));
     mineToggle?.setAttribute("aria-pressed", String(mineOnly));
     if (status) status.textContent = shown === 1 ? "פריט אחד" : `${shown} פריטים`;
     if (empty) empty.hidden = shown > 0;
@@ -120,6 +147,12 @@ const mineCount = items.filter((i) => i.data.mine).length;
   for (const b of typeButtons) {
     b.addEventListener("click", () => {
       type = b.dataset.type ?? "all";
+      apply();
+    });
+  }
+  for (const b of topicButtons) {
+    b.addEventListener("click", () => {
+      topic = b.dataset.topic ?? "all";
       apply();
     });
   }

@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 }
 
 const { track } = Astro.props;
-const { title, audience, format, scope, slug, tagline, intro, sections, closing, showDetails } = track.data;
+const { title, audience, format, scope, slug, tagline, intro, sections, closing, testimonials, showDetails } = track.data;
 const photo = trackPhotos[slug as keyof typeof trackPhotos];
 
 const details: { icon: TrackIconName; label: string; text: string }[] = [
@@ -72,6 +72,22 @@ const details: { icon: TrackIconName; label: string; text: string }[] = [
           </section>
         ))}
         {closing && <p class="track-closing">{closing}</p>}
+        {testimonials && (
+          <section class="track-testimonials" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading">המלצות</h2>
+            {testimonials.map((t) => (
+              <figure class="testimonial">
+                <blockquote>
+                  {t.paragraphs.map((p) => <p>{p}</p>)}
+                </blockquote>
+                <figcaption>
+                  <span class="testimonial-name">{t.name}</span>
+                  <span class="testimonial-role">{t.role}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </section>
+        )}
         {showDetails && (
           <section class="track-details" aria-label="פרטים מעשיים">
             {details.map((d) => (

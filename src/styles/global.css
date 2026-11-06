@@ -315,13 +315,23 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
 
 .positioning blockquote {
   margin: 0 auto;
-  max-width: 46ch;
+  max-width: 50ch;
   text-align: center;
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: clamp(24px, 3.4vw, 34px);
-  line-height: 1.5;
+  font-size: clamp(21px, 2.6vw, 28px);
+  line-height: 1.6;
   color: var(--text-dark);
+}
+
+/* Three sentences of hers: the first carries the weight, the other two
+   follow at a quieter size so the block still reads as one gesture. */
+.positioning blockquote p { margin: 0; }
+.positioning blockquote p + p {
+  margin-top: .7em;
+  font-size: .82em;
+  font-weight: 400;
+  color: var(--text-body-soft);
 }
 
 /* ---------- credentials strip ---------- */
@@ -691,6 +701,58 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   color: var(--sage);
 }
 
+/* Testimonials on a track page: professional or institutional only. */
+.track-testimonials {
+  margin-top: 20px;
+}
+
+.track-testimonials > h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--sage);
+}
+
+.testimonial {
+  margin: 0;
+  padding: 26px 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+}
+
+.testimonial + .testimonial { margin-top: 16px; }
+
+.testimonial blockquote { margin: 0; }
+
+.testimonial blockquote p {
+  margin: 0 0 .9em;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text-dark);
+}
+
+.testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.testimonial-role {
+  font-size: 14.5px;
+  color: var(--text-muted);
+}
+
 /* ---------- About page ---------- */
 
 .about-page {
@@ -727,6 +789,41 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   font-size: 21px;
   line-height: 1.5;
   color: var(--sage);
+}
+
+.about-prose h2 {
+  margin: 1.8em 0 .6em;
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--sage);
+}
+
+.about-quote {
+  margin: 0 0 1.4em;
+  padding: 18px 24px;
+  border-inline-start: 3px solid var(--sage);
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.about-quote blockquote { margin: 0; }
+
+.about-quote blockquote p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.about-quote figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
 }
 
 .about-prose .about-close {
@@ -911,6 +1008,15 @@ h1, h2, h3 { font-family: var(--font-serif); margin: 0; }
   font-weight: 700;
   letter-spacing: .06em;
   color: var(--sage);
+}
+
+.library-topic {
+  padding: 1px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--sage-soft);
+  color: var(--sage);
+  font-weight: 600;
+  font-size: 12.5px;
 }
 
 .mine-tag {

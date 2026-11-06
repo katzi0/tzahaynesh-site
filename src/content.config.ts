@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { file, glob } from "astro/loaders";
 import { trackIcons } from "./components/trackIcons";
-import { libraryTypeKeys } from "./components/libraryTypes";
+import { libraryTypeKeys, libraryTopicKeys } from "./components/libraryTypes";
 
 // The five מסלולים, as one collection. Nav, the home-page track list, the
 // track stub pages, and the footer all read from this — nothing hard-codes
@@ -16,6 +16,9 @@ const tracks = defineCollection({
     order: z.number().int().min(1).max(5),
     // Canonical Hebrew label. Must match CONTEXT.md exactly.
     title: z.string(),
+    // Shorter label for the header and footer nav, when the full title would
+    // run long there. The page heading and home-page row keep the full title.
+    navTitle: z.string().optional(),
     // Route segment under /tracks/.
     slug: z.string(),
     // Full audience line, verbatim from brief §06. Used on the track stub
@@ -50,6 +53,18 @@ const tracks = defineCollection({
       .optional(),
     // Closing statement set apart after the sections.
     closing: z.string().optional(),
+    // Testimonials, institutional or professional only, never from therapy
+    // clients (CONTEXT.md, brief §10). Quoted verbatim, one paragraph per
+    // entry, credited as the person asked to be credited.
+    testimonials: z
+      .array(
+        z.object({
+          paragraphs: z.array(z.string()).min(1),
+          name: z.string(),
+          role: z.string(),
+        }),
+      )
+      .optional(),
     // Show audience/format/scope as a closing panel after the sections. Off
     // for tracks whose full text already covers its audience in a section.
     showDetails: z.boolean().default(false),
@@ -74,6 +89,8 @@ const library = defineCollection({
     url: z.string().url().optional(),
     // Her own work, whatever its type.
     mine: z.boolean().default(false),
+    // What it's about, across types (libraryTypes.ts).
+    topic: z.enum(libraryTopicKeys).optional(),
   }),
 });
 
